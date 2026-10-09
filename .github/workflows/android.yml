@@ -117,13 +117,21 @@ jobs:
           PY
       - name: Build web + Android project
         run: |
-          mkdir -p www && cp index.html www/index.html
+          mkdir -p www && cp index.html www/index.html && cp manifest.webmanifest icon-192.png www/ 2>/dev/null || true
           npm init -y > /dev/null
           npm i @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7
           npx cap init "ألعابنا" com.akram.games --web-dir www
           npx cap add android
           python3 patch.py
           npx cap sync android
+      - name: App icon (optional)
+        continue-on-error: true
+        run: |
+          mkdir -p assets
+          cp icon-1024.png assets/icon-only.png
+          cp icon-1024.png assets/icon-foreground.png
+          npm i -D @capacitor/assets
+          npx capacitor-assets generate --android --iconBackgroundColor '#7c5cff' --iconBackgroundColorDark '#0f1226'
       - name: Build debug APK
         run: |
           cd android
