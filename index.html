@@ -72,6 +72,14 @@ body[data-th=night]{--lt:#9aa4d6;--dk:#343a78;--bd:#12143a}body[data-th=marble]{
 #cmb2{display:flex;flex-direction:column;gap:8px}#cmb2 button{padding:13px;text-align:right;background:var(--bg2)}
 .qt{border-right:3px solid var(--ac2);background:rgba(0,0,0,.18);border-radius:6px;padding:3px 6px;margin-bottom:4px;font-size:12px;opacity:.9;cursor:pointer}.m{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 #pr{position:fixed;inset:0;background:#0009;z-index:8;display:none;align-items:center;justify-content:center}#pr.on{display:flex}#pr .card{background:var(--card);border-radius:20px;padding:18px;text-align:center}#prb{display:flex;gap:10px;margin-top:12px}#prb img{width:64px;height:64px;background:var(--bg2);border-radius:12px;padding:6px;cursor:pointer}
+.bdg{background:#e53935;color:#fff;border-radius:10px;padding:1px 7px;font-size:12px;margin-inline-start:4px}
+#call{position:fixed;inset:0;background:#000;z-index:10;display:none;flex-direction:column;align-items:center;justify-content:flex-end}#call.on{display:flex}
+#rv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#111}#lv{position:absolute;top:14px;right:14px;width:110px;height:150px;object-fit:cover;border-radius:12px;border:2px solid #fff;z-index:2}
+#cst{position:absolute;top:30%;left:0;right:0;text-align:center;color:#fff;font-size:22px;text-shadow:0 2px 6px #000;z-index:2}.cbs{position:relative;z-index:2;display:flex;gap:18px;padding:30px}.cbs button{width:62px;height:62px;border-radius:50%;font-size:26px;padding:0;color:#fff}
+#vault{position:fixed;inset:0;background:var(--bg);z-index:11;display:none;flex-direction:column}#vault.on{display:flex}.vh{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--bg2)}
+#vlk{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:18vh}#vlk input{font-size:26px;text-align:center;width:220px;letter-spacing:6px;border-radius:14px;border:2px solid var(--ac);background:var(--card);color:var(--tx);padding:10px}
+#vgrid{display:none;flex:1;overflow:auto;padding:8px;grid-template-columns:repeat(3,1fr);gap:6px;align-content:start}#vgrid .tl{aspect-ratio:1;background:var(--card);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:32px}#vgrid img{width:100%;height:100%;object-fit:cover}
+#vview{position:fixed;inset:0;background:#000;z-index:12;display:none;flex-direction:column}#vview.on{display:flex}#vbody{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}#vbody img,#vbody video{max-width:100%;max-height:100%}.vb{display:flex;gap:10px;justify-content:center;padding:14px}
 .note{padding:6px 12px;font-size:12px;color:var(--mu);text-align:center}
 </style></head><body>
 <script>window.dInst=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.dInst=e});addEventListener('appinstalled',()=>{window.dInst=null});
@@ -98,18 +106,21 @@ window._fbr();
 </script>
 
 <div id="cmenu"><div class="cm"><b id="cmt"></b><div id="cmb2"></div></div></div><input type="file" id="rf" accept=".json,application/json" hidden>
+<div id="call"><video id="rv" autoplay playsinline></video><video id="lv" autoplay playsinline muted></video><div id="cst"></div><div class="cbs"><button id="cmute">🎤</button><button id="ccam">📷</button><button id="cacc" style="background:#25d366">✅</button><button id="cend" style="background:#e53935">📵</button></div></div>
+<div id="vault"><div class="vh"><b>🔐 الخزنة</b><span><button id="vadd">＋ إضافة</button> <button id="vcl">✕</button></span></div><div id="vlk"><input id="vin" type="password" inputmode="numeric" placeholder="الرقم السري"><button id="vgo" style="background:var(--ac);color:#fff;padding:10px 30px">فتح</button><div id="vmsg" style="color:var(--mu);font-size:13px;text-align:center;padding:0 20px"></div></div><div id="vgrid"></div><input type="file" id="vfi" multiple accept="image/*,video/*" hidden></div>
+<div id="vview"><div id="vbody"></div><div class="vb"><button id="vsv">💾 حفظ</button><button id="vdl">🗑 حذف</button><button id="vx">✕ إغلاق</button></div></div>
 <div id="pr"><div class="card"><b>اختر القطعة للترقية</b><div id="prb"></div></div></div>
 <div id="win"><canvas id="cf"></canvas><div class="card"><div id="wi" style="font-size:64px"></div><h2 id="wt"></h2><p id="wm"></p><div id="wd"></div><div class="wb"><button id="again">🔄 العب من جديد</button><button id="exit">🚪 خروج</button></div></div></div>
 <div id="clock"><div style="font-size:60px">🔐</div><div id="clt">أدخل رقم قفل الدردشة</div><input id="cpn" type="password" inputmode="numeric" maxlength="8"><button id="cok" style="background:var(--ac);color:#fff">فتح</button><button id="cbk">رجوع</button></div>
 <div id="lock"><div style="font-size:60px">🔒</div><div id="lt">أدخل الرقم السري</div><input id="pin" type="password" inputmode="numeric" maxlength="8"><button id="lb" style="background:var(--ac);color:#fff">فتح</button></div>
-<header><div style="font-size:26px">🎮</div><div><b>ألعابنا</b><small id="st">جاري الاتصال…</small></div><div class="sp"></div><button id="sndBtn">🔔</button><button id="outBtn">🚪</button><button id="lockBtn">🔒</button></header>
+<header><div id="vtrig" style="font-size:26px;user-select:none;-webkit-user-select:none">🎮</div><div><b>ألعابنا</b><small id="st">جاري الاتصال…</small></div><div class="sp"></div><button id="sndBtn">🔔</button><button id="outBtn">🚪</button><button id="lockBtn">🔒</button></header>
 <nav><button id="n1" class="on">♟ اللعب</button><button id="n2">💬 الدردشة <span id="bd"></span></button></nav>
 <main>
 <section id="s1" class="on">
-<div class="games"><button id="gc" class="on">♟ شطرنج</button><button id="gd">🁣 دومينو</button><button id="gk">🎯 كيرم</button><button id="gu">🃏 أونو</button><button id="gj">🂡 جاكارو</button></div>
-<div id="chessv" style="display:contents"><div class="bar" id="bar">…</div><div class="coach" id="coach"></div>
+<div class="games"><button id="gc" class="on">♟ شطرنج</button><button id="gd">🁣 دومينو</button><button id="gk">🎯 كيرم</button><button id="gu">🃏 أونو</button><button id="gj">🂡 جاكارو</button></div><div id="offb" class="note" style="display:none"><span id="offt"></span> <button id="offg" style="padding:4px 10px"></button></div>
+<div id="chessv" style="display:contents"><div class="bar" id="bar">…</div><div class="bar" id="cstatb"></div><div class="coach" id="coach"></div>
 <div class="stage"><div class="board" id="bd8"></div><div id="c3"></div></div>
-<div class="tb"><button id="thb"></button><button id="vb"></button><button id="zi" class="t3">🔍➕</button><button id="zo" class="t3">🔍➖</button><button id="fx" class="t3"></button><button id="cob"></button><button id="newg">🔄 جديدة</button></div></div>
+<div class="tb"><button id="thb"></button><button id="vb"></button><button id="zi" class="t3">🔍➕</button><button id="zo" class="t3">🔍➖</button><button id="fx" class="t3"></button><button id="rst3" class="t3">↺ اتجاه</button><button id="cob"></button><button id="newg">🔄 جديدة</button></div></div>
 <div id="dom" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="dbar">…</div><div class="bar" id="dinfo"></div><div id="dch"></div><div class="bar" id="dact"></div><div id="dhand"></div><div class="coach" id="dcoach"></div><div class="tb"><button class="cb2"></button><button id="dnew">🔄 جديدة</button></div></div>
 <div id="un" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="ubar">…</div><div class="bar" id="uinfo"></div><div id="utable"></div><div class="bar" id="uact"></div><div id="uhand"></div><div class="coach" id="ucoach"></div><div class="tb"><button class="cb2"></button><button id="unew">🔄 جديدة</button></div></div>
 <div id="car" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="kbar">…</div><div class="bar" id="kinfo"></div><div class="stage" style="padding:2px;perspective:none"><canvas id="cv" style="touch-action:none;border-radius:14px;box-shadow:0 10px 30px #0009"></canvas></div><div class="bar" id="kact"><input type="range" id="cs" min="60" max="340" value="200" style="width:75%"></div><div class="coach" id="ccoach"></div><div class="tb"><button class="cb2"></button><button id="knew">🔄 جديدة</button></div></div>
@@ -117,7 +128,7 @@ window._fbr();
 
 </section>
 <section id="s2">
-<div class="ch"><b id="chn">💬 الدردشة</b><div><button id="srb">🔍</button> <button id="cmbtn">⋮</button></div></div>
+<div class="ch"><b id="chn">💬 الدردشة</b><div><button id="callA">📞</button> <button id="callV">🎥</button> <button id="srb">🔍</button> <button id="cmbtn">⋮</button></div></div>
 <div id="sbar" style="display:none;padding:0 12px 6px"><input id="sq" placeholder="بحث في الدردشة" style="width:100%;padding:10px 14px;border-radius:20px;border:0;background:var(--card);color:var(--tx);font:inherit"></div>
 <div id="pinb" class="note" style="display:none;background:var(--card);border-radius:10px;margin:0 10px;text-align:right;cursor:pointer"></div>
 <div id="arc" class="note" style="display:none">🗄 الدردشة مؤرشفة · <button id="unarc" style="padding:4px 10px">استرجاع</button></div>
@@ -141,9 +152,9 @@ function showLock(){if(ls('pin')){$('lock').classList.add('on');$('lt').textCont
 $('lb').onclick=()=>{if(hash($('pin').value)===ls('pin')){$('lock').classList.remove('on');$('pin').value=''}else $('lt').textContent='❌ رقم خاطئ'};
 $('lockBtn').onclick=()=>{if(ls('pin')){const x=prompt('اكتب رقماً جديداً لتغيير القفل، أو اتركه فارغاً لإزالته');if(x===null)return;x?ls('pin',hash(x)):ls('pin',null);if(x)showLock()}else{const x=prompt('اختر رقماً سرياً (أرقام)');if(x){ls('pin',hash(x));showLock()}}};
 showLock();
-document.addEventListener('visibilitychange',()=>{if(document.hidden){showLock();cUnl=false;if(tab===2&&ls('cpin'))$('clock').classList.add('on')}else markRead()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){showLock();vlock();cUnl=false;if(tab===2&&ls('cpin'))$('clock').classList.add('on')}else markRead()});
 // ---------- tabs ----------
-let tab=1,cUnl=false;function go(n){if(n==2&&ls('cpin')&&!cUnl)$('clock').classList.add('on');if(n==1){cUnl=false;$('clock').classList.remove('on')}tab=n;$('s1').classList.toggle('on',n==1);$('s2').classList.toggle('on',n==2);$('n1').classList.toggle('on',n==1);$('n2').classList.toggle('on',n==2);if(n==2){$('bd').textContent='';scrollDown();markRead()}else setTimeout(()=>{T&&(T.w=0);draw3d()},40)}
+let tab=1,cUnl=false;function go(n){if(n==2&&ls('cpin')&&!cUnl)$('clock').classList.add('on');if(n==1){cUnl=false;$('clock').classList.remove('on')}tab=n;$('s1').classList.toggle('on',n==1);$('s2').classList.toggle('on',n==2);$('n1').classList.toggle('on',n==1);$('n2').classList.toggle('on',n==2);if(n==2){scrollDown();markRead()}else{setTimeout(()=>{T&&(T.w=0);draw3d()},40);paintBadge()}}
 $('n1').onclick=()=>go(1);$('n2').onclick=()=>go(2);
 const scrollDown=()=>{const m=$('msgs');m.scrollTop=m.scrollHeight};
 // ---------- chess logic ----------
@@ -189,14 +200,14 @@ function cmove(f,t,pr){const G=G0,m=mk(G.b,G.cr,G.ep,f,t,pr),n={b:m.b,cr:m.cr,ep
  sel=null;hints=[];pend=null;G0=n;render();gameRef.set(n)}
 // ---------- db / state ----------
 let db,uid,me='w',gameRef,chatCol,statusRef,G0=null,sel=null,hints=[],peerSeen=0;
-function render(){const el=$('bd8');el.innerHTML='';if(!G0)return;if(G0.win){const k=G0.win+'|'+(G0.n||0);if(wk!==k){wk=k;showWin()}}else{wk='';$('win').classList.remove('on')}
+function render(){const el=$('bd8');el.innerHTML='';if(!G0)return;if(G0.win){const k=G0.win+'|'+(G0.n||0);if(wk!==k){wk=k;showWin()}}else{wk='';if(curGame==='chess')$('win').classList.remove('on')}
  const flip=me==='b',chk=!G0.win&&inCheck(G0.b,G0.turn),cnt0=G0.b.filter(Boolean).length,capd=pcC!==undefined&&cnt0<pcC;pcC=cnt0;gsnd('c',G0.n||0,()=>sfx(chk?'check':capd?'cap':'move'));
  for(let k=0;k<64;k++){const i=flip?63-k:k,r=i>>3,f=i&7,s=document.createElement('div');
   s.className='sq '+((r+f)%2?'d':'l')+(i===sel?' sel':'')+(hints.includes(i)?' mv':'')+(G0.last&&G0.last.includes(i)?' last':'')+(chk&&G0.b[i]===G0.turn+'K'?' chk':'');
   const p=G0.b[i];if(p){const sp=document.createElement('span');sp.className='pc '+(p[0]==='w'?'pw':'pb');sp.innerHTML='<img src="'+IMG[p]+'" alt="" draggable="false">';s.appendChild(sp)}
   s.onclick=()=>tap(i);el.appendChild(s)}
  const mine=G0.turn===me;turnPing('c',mine&&!G0.win);
- $('bar').innerHTML=G0.win==='t'?'🤝 تعادل ('+(G0.why||'')+')':G0.win?`🏆 فاز <b>${G0.win===me?'أنت':'خصمك'}</b>`:(mine?'<b>دورك</b> — أنت '+(me==='w'?'الأبيض':'الأسود'):'بانتظار حركة خصمك…')+(G0.bl?'':' (لم ينضم الخصم بعد)')+(chk?' ⚠️ كش!':'');updCoach()}
+ $('bar').innerHTML=G0.win==='t'?'🤝 تعادل ('+(G0.why||'')+')':G0.win?`🏆 فاز <b>${G0.win===me?'أنت':'خصمك'}</b>`:(mine?'<b>دورك</b> — أنت '+(me==='w'?'الأبيض':'الأسود'):'بانتظار حركة خصمك…')+(G0.bl?'':' (لم ينضم الخصم بعد)')+(chk?' ⚠️ كش!':'');cstat();updCoach();cpuTick('c')}
 function tap(i){if(!G0||G0.win||G0.turn!==me)return;const p=G0.b[i];
  if(sel!==null&&hints.includes(i)){const mv=G0.b[sel];if(mv[1]==='P'&&(i>>3===0||i>>3===7)){pend=[sel,i];showPromo();return}cmove(sel,i);return}
  if(p&&p[0]===me){sel=i;hints=lmoves(G0,i)}else{sel=null;hints=[]}render()}
@@ -222,6 +233,7 @@ $('thb').onclick=()=>{th=TH[(TH.indexOf(th)+1)%TH.length];ls('th',th);applyTh()}
 $('vb').onclick=()=>{flat=!flat;ls('flat',flat?'1':'0');applyTh()};
 $('cob').onclick=()=>{coachOn=!coachOn;ls('coach',coachOn?'1':'0');applyTh();render()};
 $('zi').onclick=()=>{Rz=Math.max(7,Rz-1.5);T&&view()};$('zo').onclick=()=>{Rz=Math.min(20,Rz+1.5);T&&view()};
+$('rst3').onclick=()=>{az=me==='w'?0:Math.PI;pol=.95;Rz=12;T&&view()};
 $('fx').onclick=()=>{fix=!fix;ls('fix',fix?'1':'0');applyTh()};
 applyTh();
 const VAL={P:100,N:320,B:330,R:500,Q:900,K:20000},AR={P:'البيدق',N:'الحصان',B:'الفيل',R:'القلعة',Q:'الوزير',K:'الملك'};
@@ -276,9 +288,9 @@ function init3(){if(T)return true;if(typeof THREE==='undefined')return false;
  T={r,sc,cam,fr,sq,pg,GEO,w:0,h:0,mats:{w:M(0xf3efe6,.35,.05),b:M(0x17171b,.28,.25),g:M(0xd9a933,.3,.75,0x4a3510)}};
  let dn=null,pd=0;const ps=new Map(),e=r.domElement,ray=new THREE.Raycaster(),v2=new THREE.Vector2();
  e.addEventListener('pointerdown',x=>{ps.set(x.pointerId,[x.clientX,x.clientY]);dn={x:x.clientX,y:x.clientY,m:ps.size>1?99:0};e.setPointerCapture(x.pointerId)});
- e.addEventListener('pointermove',x=>{if(!dn)return;ps.set(x.pointerId,[x.clientX,x.clientY]);if(ps.size===2){dn.m=99;if(fix)return;const[a,b]=[...ps.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)Rz=Math.max(7,Math.min(20,Rz*pd/d));pd=d;view();return}const dx=x.clientX-dn.x,dy=x.clientY-dn.y;dn.m+=Math.abs(dx)+Math.abs(dy);dn.x=x.clientX;dn.y=x.clientY;if(fix)return;az-=dx*.008;pol=Math.max(.5,Math.min(1.35,pol+dy*.006));view()});
+ e.addEventListener('pointermove',x=>{if(!dn)return;ps.set(x.pointerId,[x.clientX,x.clientY]);if(ps.size===2){dn.m=99;if(fix)return;const[a,b]=[...ps.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)Rz=Math.max(7,Math.min(20,Rz*pd/d));pd=d;view();return}const dx=x.clientX-dn.x,dy=x.clientY-dn.y;dn.m+=Math.abs(dx)+Math.abs(dy);dn.x=x.clientX;dn.y=x.clientY;if(fix||dn.m<14)return;az-=dx*.008;pol=Math.max(.5,Math.min(1.35,pol+dy*.006));view()});
  e.addEventListener('wheel',x=>{if(fix)return;x.preventDefault();Rz=Math.max(7,Math.min(20,Rz+Math.sign(x.deltaY)));view()},{passive:false});
- e.addEventListener('pointerup',x=>{ps.delete(x.pointerId);pd=0;if(!dn)return;const mv=dn.m;dn=null;if(mv>8)return;const b=e.getBoundingClientRect();v2.set((x.clientX-b.left)/b.width*2-1,-(x.clientY-b.top)/b.height*2+1);ray.setFromCamera(v2,cam);
+ e.addEventListener('pointerup',x=>{ps.delete(x.pointerId);pd=0;if(!dn)return;const mv=dn.m;dn=null;if(mv>=14)return;const b=e.getBoundingClientRect();v2.set((x.clientX-b.left)/b.width*2-1,-(x.clientY-b.top)/b.height*2+1);ray.setFromCamera(v2,cam);
   const h=ray.intersectObjects(sq.concat(pg.children),true)[0];if(!h)return;let o=h.object;while(o&&o.userData.i===undefined)o=o.parent;if(o)tap(o.userData.i)});
  addEventListener('resize',()=>draw3d());return true}
 function view(){const t=T,R=Rz;t.cam.position.set(R*Math.sin(az)*Math.cos(pol),R*Math.sin(pol),R*Math.cos(az)*Math.cos(pol));t.cam.lookAt(0,.3,0);t.r.render(t.sc,t.cam)}
@@ -296,10 +308,12 @@ function draw3d(){if(flat||!G0||!init3())return;const t=T,c=$('c3'),w=c.clientWi
 const RX=/^\p{Extended_Pictographic}\p{Emoji_Modifier}?(?:\uFE0F|\u200D\p{Extended_Pictographic}\p{Emoji_Modifier}?)*\uFE0F?$/u;
 let CS={},setRef=null,peerTyp=0,lastTyp=0,typRef=null,ready=false,snd=ls('snd')!=='0',actx=null,replyTo=null,editing=null,hv=[];try{hv=JSON.parse(ls('hid')||'[]')}catch(e){}
 const HID=new Set(hv),LT={};
+let rdt=+ls('rdt')||0;
 let MS={},archT=+ls('arch')||0,delT=+ls('del')||0;
 let lastIn=0,myRead=0,peerRead=0,readRef=null;
 function paintTicks(){document.querySelectorAll('.m.me').forEach(m=>{const k=m.querySelector('.tk');if(!k)return;const r=+m.dataset.t<=peerRead;k.textContent=r?'✓✓':'✓';k.style.color=r?'#7defff':'inherit';k.style.opacity=r?1:.75})}
-function markRead(){if(!readRef||tab!==2||document.hidden||lastIn<=myRead)return;myRead=lastIn;const o=Object.assign({},window._rd||{});o[uid]=lastIn;readRef.set(o).catch(()=>{})}
+function paintBadge(){const n=tab===2&&!document.hidden?0:Object.values(MS).filter(d=>d.u!==uid&&d.t>rdt&&d.t>delT&&!(d.x&&d.x<=Date.now())).length;$('bd').innerHTML=n?'<span class="bdg">'+(n>99?'99+':n)+'</span>':'';document.title=n?'('+n+') ألعابنا':'ألعابنا';try{n?navigator.setAppBadge&&navigator.setAppBadge(n):navigator.clearAppBadge&&navigator.clearAppBadge()}catch(e){}}
+function markRead(){if(tab===2&&!document.hidden&&lastIn>rdt){rdt=lastIn;ls('rdt',String(rdt));paintBadge()}if(!readRef||tab!==2||document.hidden||lastIn<=myRead)return;myRead=lastIn;const o=Object.assign({},window._rd||{});o[uid]=lastIn;readRef.set(o).catch(()=>{})}
 const EM='😀😃😄😁😆😅😂🤣😊😇🙂😉😍🥰😘😋😛😜🤪😎🤩🥳😏😒😞😔😟😕🙁😣😖😫😩🥺😢😭😤😠😡🤬🤯😳🥵🥶😱😨😰😥😓🤗🤔🤭🤫😶😐😑😬🙄😯😴🤤😪🤐🥴🤢🤮🤧😷🤒🤕😈👿💀👻👽🤖💩🙈🙉🙊👍👎👌✌️🤞🤟🤘👏🙌🙏💪👋✋🤝❤️🧡💛💚💙💜🖤💔💕💞💯🔥⭐✨🎉🎊🎁🏆🎮♟🎲🍕🍔☕🌹🌙☀️🌈'.match(/\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*/gu);
 const ST=['😂','😍','😭','🔥','👍','❤️','🎉','😡','🥳','🤝','😎','🙏'];
 const emo=$('emo');ST.forEach(s=>{const e=document.createElement('span');e.className='s';e.textContent=s;e.onclick=()=>send({k:'st',v:s});emo.appendChild(e)});
@@ -343,7 +357,7 @@ function addMsg(d,id,rep){if(d.t<=Math.max(archT,delT)||HID.has(id)||(d.x&&d.x<=
  if(d.k==='c'||d.k==='e')m.append(document.createTextNode((d.k==='c'?'👤 ':'📅 ')+d.v));
  if(d.k==='p'){const q=document.createElement('b');q.textContent='📊 '+d.q;m.append(q);const vs=d.votes||{};(d.o||[]).forEach((o,i)=>{const b=document.createElement('button');const n=Object.values(vs).filter(x=>x===i).length;b.textContent=o+' ('+n+')'+(vs[uid]===i?' ✓':'');b.style.cssText='display:block;width:100%;margin-top:5px;background:rgba(255,255,255,.2);color:inherit';b.onclick=()=>chatCol.doc(id).update({votes:Object.assign({},vs,{[uid]:i})});m.append(b)})}
  {const t=document.createElement('div');t.className='t';t.textContent=hm(d.t)+(d.ed?' · معدّلة':'');if(d.u===uid){const k=document.createElement('span');k.className='tk';k.style.cssText='margin-inline-start:5px;font-weight:700;letter-spacing:-2px';t.append(k);m.dataset.t=d.t}m.append(t)}
- old?old.replaceWith(m):$('msgs').append(m);if(!rep){scrollDown();if(tab!==2&&d.u!==uid)$('bd').textContent='●'}if(d.u!==uid){lastIn=Math.max(lastIn,d.t);markRead()}paintTicks()}
+ old?old.replaceWith(m):$('msgs').append(m);if(!rep){scrollDown()}if(d.u!==uid){lastIn=Math.max(lastIn,d.t);markRead()}paintTicks()}
 // ---------- chat menu: save / backup / archive / delete ----------
 function renderAll(){$('msgs').innerHTML='';Object.entries(MS).sort((a,b)=>a[1].t-b[1].t).forEach(([id,d])=>addMsg(d,id));$('arc').style.display=archT?'block':'none';scrollDown()}
 const nm=d=>d.u===uid?'أنا':'الطرف الآخر',dstr=t=>new Date(t).toLocaleString('ar',{dateStyle:'short',timeStyle:'short'}),esc=x=>String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -367,7 +381,7 @@ const cl=()=>$('cmenu').classList.remove('on');$('cmenu').onclick=e=>{if(e.targe
 function menu(t,items){$('cmt').textContent=t;const b=$('cmb2');b.innerHTML='';items.forEach(([x,f])=>{const k=document.createElement('button');k.textContent=x;k.onclick=f;b.append(k)});$('cmenu').classList.add('on')}
 const go1=f=>()=>{cl();f()};
 const unarc=()=>{archT=0;ls('arch',null);renderAll()};$('unarc').onclick=unarc;
-const MAIN=()=>menu('خيارات الدردشة'+(window.fbEmail?' · '+window.fbEmail:''),[['💾 حفظ الدردشة',EXP],['📦 عمل نسخة احتياطية (ملف)',go1(backup)],['♻️ استعادة من نسخة',go1(()=>$('rf').click())],[archT?'📂 إلغاء الأرشفة':'🗄 أرشفة الدردشة',go1(()=>{if(archT)unarc();else{archT=Date.now();ls('arch',String(archT));renderAll()}})],['⏳ رسائل مؤقتة',TTL],['🔐 قفل الدردشة',go1(clk)],['🔔 الأصوات: '+(snd?'تعمل':'متوقفة'),go1(()=>{snd=!snd;ls('snd',snd?'1':'0');paintSnd();if(snd)sfx('msg')})],...(window.dInst?[['📲 تثبيت التطبيق على الشاشة',go1(()=>window.dInst.prompt())]]:/iphone|ipad/i.test(navigator.userAgent)&&!navigator.standalone?[['📲 كيف أثبّت التطبيق؟',go1(()=>alert('اضغط زر المشاركة في سفاري ثم «إضافة إلى الشاشة الرئيسية»'))]]:[]),['🚪 تسجيل الخروج',go1(()=>{if(confirm('تسجيل الخروج من التطبيق؟'))window.fbLogout&&window.fbLogout()})],...(window.AndroidHider?[['🫥 إخفاء التطبيق',go1(()=>{if(confirm('سيختفي التطبيق من الشاشة. لإظهاره اتصل بالرقم السري من تطبيق الاتصال.'))AndroidHider.hide()})],['🛡 منع لقطات الشاشة: '+(scr?'يعمل':'متوقف'),go1(()=>{scr=!scr;ls('scr',scr?'1':'0');AndroidHider.secure(scr)})]]:[]),['🗑 حذف الدردشة',DEL],['إغلاق',cl]]);
+const MAIN=()=>menu('خيارات الدردشة'+(window.fbEmail?' · '+window.fbEmail:''),[['💾 حفظ الدردشة',EXP],['📦 عمل نسخة احتياطية (ملف)',go1(backup)],['♻️ استعادة من نسخة',go1(()=>$('rf').click())],[archT?'📂 إلغاء الأرشفة':'🗄 أرشفة الدردشة',go1(()=>{if(archT)unarc();else{archT=Date.now();ls('arch',String(archT));renderAll()}})],['⏳ رسائل مؤقتة',TTL],['🔐 قفل الدردشة',go1(clk)],['🔔 الأصوات: '+(snd?'تعمل':'متوقفة'),go1(()=>{snd=!snd;ls('snd',snd?'1':'0');paintSnd();if(snd)sfx('msg')})],...(window.dInst?[['📲 تثبيت التطبيق على الشاشة',go1(()=>window.dInst.prompt())]]:/iphone|ipad/i.test(navigator.userAgent)&&!navigator.standalone?[['📲 كيف أثبّت التطبيق؟',go1(()=>alert('اضغط زر المشاركة في سفاري ثم «إضافة إلى الشاشة الرئيسية»'))]]:[]),...(window.AndroidHider?[['🫥 إخفاء التطبيق',go1(()=>{if(confirm('سيختفي التطبيق من الشاشة. لإظهاره اتصل بالرقم السري من تطبيق الاتصال.'))AndroidHider.hide()})],['🛡 منع لقطات الشاشة: '+(scr?'يعمل':'متوقف'),go1(()=>{scr=!scr;ls('scr',scr?'1':'0');AndroidHider.secure(scr)})]]:[]),['🚪 تسجيل الخروج',go1(()=>{if(confirm('تسجيل الخروج من التطبيق؟'))window.fbLogout&&window.fbLogout()})],['🗑 حذف الدردشة',DEL],['إغلاق',cl]]);
 const EXP=()=>menu('حفظ الدردشة',[['📱 للجوال — بدون وسائط',go1(()=>toPhone(false))],['📱 للجوال — مع الوسائط',go1(()=>toPhone(true))],['✉️ للبريد — بدون وسائط',go1(()=>toMail(false))],['✉️ للبريد — مع الوسائط',go1(()=>toMail(true))],['↩ رجوع',MAIN]]);
 const DEL=()=>menu('حذف الدردشة',[['🙈 حذف من عندي فقط',go1(()=>{if(confirm('حذف الرسائل من جهازك فقط؟ (تبقى عند الطرف الآخر)')){delT=Date.now();ls('del',String(delT));renderAll()}})],['🗑 حذف للجميع',go1(()=>{if(confirm('سيُحذف كل شيء عند الطرفين نهائياً. متأكد؟'))Object.keys(MS).forEach(id=>chatCol.doc(id).delete().catch(()=>{}))})],['↩ رجوع',MAIN]]);
 let scr=ls('scr')==='1';if(window.AndroidHider&&scr)AndroidHider.secure(true);
@@ -409,7 +423,7 @@ function turnPing(k,m){if(LT[k]===false&&m)beep('turn');LT[k]=m}
 addEventListener('pointerdown',()=>{try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();actx.resume()}catch(e){}},{once:true});
 function sweep(){const n=Date.now();Object.entries(MS).forEach(([id,d])=>{if(d.x&&d.x<=n)chatCol.doc(id).delete().catch(()=>{})})}
 // ---------- presence / last seen ----------
-function paintSeen(){const el=$('st');if(Date.now()-peerTyp<4000){el.textContent='يكتب الآن… ✍️';return}if(!peerSeen){el.textContent='بانتظار الطرف الآخر';return}
+function paintSeen(){paintOff();const el=$('st');if(Date.now()-peerTyp<4000){el.textContent='يكتب الآن… ✍️';return}if(!peerSeen){el.textContent='بانتظار الطرف الآخر';return}
  el.textContent=Date.now()-peerSeen<45000?'الطرف الآخر: متصل الآن 🟢':'آخر ظهور '+hm(peerSeen)}
 setInterval(paintSeen,10000);
 // ---------- dominoes ----------
@@ -435,12 +449,12 @@ function drender(){if(!D)return;
  if(D.win){const k=D.win+'|'+D.n;if(dwk!==k){dwk=k;dwin()}}else{dwk='';if(curGame==='dom')$('win').classList.remove('on')}
  const mine=D[HK()],opn=D[dme==='w'?'hb':'hw'],my=D.turn===dme&&!D.win;turnPing('d',my);gsnd('d',D.n,()=>sfx('tile'));
  $('dbar').innerHTML=D.win?(D.win==='t'?'🤝 تعادل':`🏆 فاز <b>${D.win===dme?'أنت':'خصمك'}</b>`):(my?'<b>دورك</b>':'بانتظار خصمك…')+(D.bl?'':' (لم ينضم الخصم بعد)');
- $('dinfo').textContent='قطع الخصم: '+opn.length+' · المخزون: '+D.bn.length;
+ $('dinfo').textContent='قطعك: '+mine.length+' ('+pips(mine)+' نقطة) · قطع الخصم: '+opn.length+' · المخزون: '+D.bn.length;
  const ch=$('dch');ch.innerHTML='';if(!D.ch.length)ch.textContent='ضع أي قطعة لتبدأ';D.ch.forEach(t=>ch.append(tileEl(t,1)));
  const hd=$('dhand');hd.innerHTML='';let any=false;
  mine.slice().sort((x,y)=>x-y).forEach(t=>{const c=dcan(D,t),ok=my&&(c.l||c.r);any=any||ok;const e=tileEl(t);e.classList.add(ok?'ok':'no');if(ok)e.onclick=()=>dpick(t);if(t===dsel)e.style.transform='translateY(-10px)';hd.append(e)});
  const ac=$('dact');ac.innerHTML='';const bt=(x,f)=>{const b=document.createElement('button');b.textContent=x;b.onclick=f;ac.append(b)};
- if(my){if(dsel!=null){bt('◀ يسار',()=>dplay(dsel,'l'));bt('يمين ▶',()=>dplay(dsel,'r'))}else if(!any){D.bn.length?bt('🂠 اسحب قطعة',ddraw):bt('⏭ تمرير',dpass)}}dcoachUpd(my)}
+ if(my){if(dsel!=null){bt('◀ يسار',()=>dplay(dsel,'l'));bt('يمين ▶',()=>dplay(dsel,'r'))}else if(!any){D.bn.length?bt('🂠 اسحب قطعة',ddraw):bt('⏭ تمرير',dpass)}}dcoachUpd(my);cpuTick('d')}
 function drestart(sw){sw=sw&&D.bl;dref.set(dinit(sw?D.bl:D.w,sw?D.w:D.bl))}
 $('dnew').onclick=()=>{if(confirm('بدء لعبة دومينو جديدة؟'))drestart(false)};
 function dwin(){const w=D.win,t=w==='t',mine=w===dme;
@@ -471,12 +485,12 @@ function urender(){if(!U)return;
  if(U.win){const k=U.win+'|'+U.n;if(uwk!==k){uwk=k;uwin()}}else{uwk='';if(curGame==='uno')$('win').classList.remove('on')}
  const my=U.turn===ume&&!U.win,h=U[UH()],o=U[UO()];turnPing('u',my);gsnd('u',U.n,()=>sfx('card'));
  $('ubar').innerHTML=U.win?`🏆 فاز <b>${U.win===ume?'أنت':'خصمك'}</b>`:(my?'<b>دورك</b>':'بانتظار خصمك…')+(U.bl?'':' (لم ينضم الخصم بعد)')+(U.uno?(U.uno===ume?' · 🔔 UNO!':' · ⚠️ الخصم عنده UNO!'):'');
- $('uinfo').textContent='أوراق الخصم: '+o.length+' · الباقي في السحب: '+U.dk.length;
+ $('uinfo').textContent='أوراقك: '+h.length+' · أوراق الخصم: '+o.length+' · الباقي في السحب: '+U.dk.length;
  let any=false;const t=$('utable');t.innerHTML='';const dp=document.createElement('div');dp.className='uc big';dp.style.background='#111';dp.style.color='#e53935';dp.textContent='UNO';t.append(dp);
  const top=ucard(U.dc[U.dc.length-1],1);top.style.boxShadow='0 0 0 7px '+UC[U.col]+',0 8px 20px #000a';t.append(top);
  const hd=$('uhand');hd.innerHTML='';h.forEach((c,i)=>{const ok=my&&uok(U,c);any=any||ok;const e=ucard(c);e.classList.add(ok?'ok':'no');if(ok)e.onclick=()=>upick(i);if(i===usel)e.style.transform='translateY(-12px)';hd.append(e)});
  const ac=$('uact');ac.innerHTML='';const bt=(x,f,bg)=>{const b=document.createElement('button');b.textContent=x;b.onclick=f;if(bg)b.style.background=bg;ac.append(b)};
- if(my){if(usel>=0){ac.append('اختر اللون: ');['r','y','g','b'].forEach(c=>bt('●',()=>uplay(usel,c),UC[c]))}else if(U.dr)bt('⏭ تمرير',upass);else if(!any){bt('🂠 اسحب ورقة',udraw);dp.style.outline='3px solid #ffd24a';dp.style.cursor='pointer';dp.onclick=udraw}}ucoachUpd(my)}
+ if(my){if(usel>=0){ac.append('اختر اللون: ');['r','y','g','b'].forEach(c=>bt('●',()=>uplay(usel,c),UC[c]))}else if(U.dr)bt('⏭ تمرير',upass);else if(!any){bt('🂠 اسحب ورقة',udraw);dp.style.outline='3px solid #ffd24a';dp.style.cursor='pointer';dp.onclick=udraw}}ucoachUpd(my);cpuTick('u')}
 function urestart(sw){sw=sw&&U.bl;uref.set(uinit(sw?U.bl:U.w,sw?U.w:U.bl))}
 $('unew').onclick=()=>{if(confirm('بدء لعبة أونو جديدة؟'))urestart(false)};
 function uwin(){const mine=U.win===ume,pt=h=>h.reduce((s,c)=>s+(c[0]==='w'?50:/\d/.test(c[1])?+c[1]:20),0);
@@ -503,7 +517,7 @@ let K=null,kme='w',kref=null,kwk='',kx=200,kaim=null,kcoach=null,kseen=0,kjob=0,
 const cvs=()=>$('cv'),kb=G=>{const b=[];for(let i=0;i<G.c.length;i+=4)b.push({x:G.c[i],y:G.c[i+1],vx:0,vy:0,r:CRD,m:1,t:CT[G.c[i+2]],a:G.c[i+3]===1});return b};
 const ksy=t=>t==='w'?335:65,kstop=bs=>bs.every(b=>!b.a||Math.abs(b.vx)+Math.abs(b.vy)<.04);
 function kinit(w,bl){const c=[200,200,2,1];for(let i=0;i<6;i++){const a=i*Math.PI/3;c.push(200+22*Math.cos(a),200+22*Math.sin(a),i%2,1)}for(let i=0;i<12;i++){const a=i*Math.PI/6;c.push(200+44*Math.cos(a),200+44*Math.sin(a),i%2,1)}
- return{c:c.map(v=>Math.round(v*100)/100),turn:'w',w,bl,sw:0,sb:0,n:0,win:'',shot:null,fin:0}}
+ return{c:c.map(v=>Math.round(v*100)/100),turn:'w',w,bl,sw:0,sb:0,n:0,win:'',shot:null,fin:0,cw:0,cb:0}}
 function cstep(bs){for(const b of bs){if(!b.a)continue;b.x+=b.vx;b.y+=b.vy;b.vx*=.982;b.vy*=.982;
   if(b.x<b.r+8){b.x=b.r+8;b.vx=Math.abs(b.vx)*.82}else if(b.x>CB-b.r-8){b.x=CB-b.r-8;b.vx=-Math.abs(b.vx)*.82}
   if(b.y<b.r+8){b.y=b.r+8;b.vy=Math.abs(b.vy)*.82}else if(b.y>CB-b.r-8){b.y=CB-b.r-8;b.vy=-Math.abs(b.vy)*.82}
@@ -513,12 +527,11 @@ function cstep(bs){for(const b of bs){if(!b.a)continue;b.x+=b.vx;b.y+=b.vy;b.vx*
    if(rv<0){const j2=-1.9*rv/(1/a.m+1/b.m);a.vx-=j2*nx/a.m;a.vy-=j2*ny/a.m;b.vx+=j2*nx/b.m;b.vy+=j2*ny/b.m}}}}}
 function crun(bs,max){for(let n=0;n<(max||900);n++){cstep(bs);if(kstop(bs))break}}
 function kanim(bs,done,id){let n=0,al=bs.filter(b=>b.a).length;sfx('hit');(function f(){if(id!==undefined&&id!==kjob)return;for(let i=0;i<2;i++){cstep(bs);n++}const na=bs.filter(b=>b.a).length;if(na<al){sfx('pocket');al=na}kdraw(bs);if(n<900&&!kstop(bs))requestAnimationFrame(f);else done(bs)})()}
-function kfin(bs,base,sh,sn){const n=clone(base),o=sh==='w'?'b':'w',sc={w:n.sw,b:n.sb};let cont=false,st=bs[bs.length-1];
- bs.slice(0,-1).forEach((b,i)=>{n.c[i*4]=Math.round(b.x*100)/100;n.c[i*4+1]=Math.round(b.y*100)/100;n.c[i*4+3]=b.a?1:0;
-  if(!b.a&&base.c[i*4+3]===1){if(b.t==='q'){sc[sh]+=3;cont=true}else if(b.t===sh){sc[sh]+=1;cont=true}else sc[o]+=1}});
- if(!st.a){sc[sh]-=1;cont=false}
- n.sw=sc.w;n.sb=sc.b;n.turn=cont?sh:o;n.n++;n.fin=sn;n.shot={n:sn};
- const alive=t=>bs.slice(0,-1).filter(b=>b.t===t&&b.a).length;if(!alive('w'))n.win='w';else if(!alive('b'))n.win='b';return n}
+function kfin(bs,base,sh,sn){const n=clone(base),o=sh==='w'?'b':'w',sc={w:n.sw,b:n.sb},cc={w:n.cw||0,b:n.cb||0},st=bs[bs.length-1];let got=false;
+ bs.slice(0,-1).forEach((b,i)=>{n.c[i*4]=Math.round(b.x*100)/100;n.c[i*4+1]=Math.round(b.y*100)/100;n.c[i*4+3]=b.a?1:0;if(!b.a&&base.c[i*4+3]===1){got=true;cc[sh]++;sc[sh]+=b.t==='q'?3:1}});
+ if(!st.a){sc[sh]-=1;got=false}
+ n.sw=sc.w;n.sb=sc.b;n.cw=cc.w;n.cb=cc.b;n.turn=got?sh:o;n.n++;n.fin=sn;n.shot={n:sn};
+ if(!bs.slice(0,-1).some(b=>b.a))n.win=sc.w>sc.b?'w':sc.b>sc.w?'b':'t';return n}
 function kfire(x,ax,ay,pw){const sn=(K.n||0)+1,base=clone(K),sh=K.turn,bs=kb(K);kmine=true;kseen=sn;
  bs.push({x,y:ksy(sh),vx:ax*pw*13,vy:ay*pw*13,r:SRD,m:2.4,t:'s',a:true});kcoach=null;
  kref.set(Object.assign(clone(K),{shot:{n:sn,x,ax,ay,pw}}));
@@ -540,18 +553,18 @@ cvs().addEventListener('pointermove',e=>{if(kaim){kaim=kpt(e);kdraw()}});
 cvs().addEventListener('pointerup',e=>{if(!kaim)return;const[px,py]=kaim;kaim=null;const sy=ksy(K.turn),dv=K.turn==='w'?-1:1;let ax=kx-px,ay=sy-py;const L=Math.hypot(ax,ay);if(L<18){kdraw();return}ax/=L;ay/=L;if(ay*dv<.1){ay=.1*dv;const m=Math.hypot(ax,ay);ax/=m;ay/=m}kfire(kx,ax,ay,Math.min(1,L/130))});
 $('cs').oninput=()=>{kx=kme==='b'?400-+$('cs').value:+$('cs').value;kdraw()};
 function cbest(){const me=K.turn,sy=ksy(me),dv=me==='w'?-1:1,best={s:-1e9};for(const ox of [100,200,300])for(let a=-65;a<=65;a+=8)for(const pw of [.55,1]){const an=a*Math.PI/180,ax=Math.sin(an),ay=Math.cos(an)*dv,bs=kb(K);bs.push({x:ox,y:sy,vx:ax*pw*13,vy:ay*pw*13,r:SRD,m:2.4,t:'s',a:true});crun(bs,450);
-  let sc=0,o=0,q=0,p=0,f=0;bs.forEach((b,i)=>{if(b.t==='s'){if(!b.a){f=1;sc-=3}return}if(!b.a&&K.c[i*4+3]===1){if(b.t==='q'){q++;sc+=4}else if(b.t===me){o++;sc+=2}else{p++;sc-=2}}});if(sc>best.s)Object.assign(best,{s:sc,x:ox,ax,ay,pw,o,q,p,f})}return best}
+  let sc=0,o=0,q=0,p=0,f=0;bs.forEach((b,i)=>{if(b.t==='s'){if(!b.a){f=1;sc-=3}return}if(!b.a&&K.c[i*4+3]===1){if(b.t==='q'){q++;sc+=4}else{o++;sc+=2}}});if(sc>best.s)Object.assign(best,{s:sc,x:ox,ax,ay,pw,o,q,p,f})}return best}
 function ccoachUpd(my){const c=$('ccoach');if(!coachOn||!my){c.style.display='none';kcoach=null;return}
  if(!kcoach||kcoach.n!==K.n){setTimeout(()=>{if(K&&K.turn===kme&&coachOn){kcoach=cbest();kcoach.n=K.n;ccoachUpd(true);kdraw()}},30);c.style.display='block';c.innerHTML='💡 المدرّب يحسب أفضل ضربة…';return}
- const b=kcoach;c.style.display='block';c.innerHTML='💡 <b>مدرّبك السري</b> (لا يراه خصمك)<br>'+(b.s>0?`ضع القرص عند الدائرة الذهبية واضرب باتجاه الخط المنقّط بقوة ${Math.round(b.pw*100)}% — يُتوقع أن تُدخل ${b.o?b.o+' من قطعك ':''}${b.q?'والملكة ':''}`:'لا توجد ضربة مضمونة — اضرب ضربة خفيفة آمنة تبعد القطع عن الحفر عند خصمك')}
+ const b=kcoach;c.style.display='block';c.innerHTML='💡 <b>مدرّبك السري</b> (لا يراه خصمك)<br>'+(b.s>0?`ضع القرص عند الدائرة الذهبية واضرب باتجاه الخط المنقّط بقوة ${Math.round(b.pw*100)}% — يُتوقع أن تُدخل ${b.o?b.o+' قطعة ':''}${b.q?(b.o?'و':'')+'الملكة ':''}`:'لا توجد ضربة مضمونة — اضرب ضربة خفيفة آمنة تبعد القطع عن الحفر عند خصمك')}
 function krender(){if(!K)return;if(K.win){const k=K.win+'|'+K.n;if(kwk!==k){kwk=k;kwin()}}else{kwk='';if(curGame==='car')$('win').classList.remove('on')}
  const my=K.turn===kme&&!K.win&&!kmine;turnPing('k',my);
- $('kbar').innerHTML=K.win?`🏆 فاز <b>${K.win===kme?'أنت':'خصمك'}</b>`:(my?'<b>دورك</b> — اسحب للخلف ثم أفلت لتضرب':'بانتظار خصمك…')+(K.bl?'':' (لم ينضم الخصم بعد)');
- $('kinfo').textContent='نقاطك: '+(kme==='w'?K.sw:K.sb)+' · نقاط الخصم: '+(kme==='w'?K.sb:K.sw)+' · قطعك: '+(kme==='w'?'⚪ البيضاء':'⚫ السوداء');
- $('cs').style.visibility=my?'visible':'hidden';ccoachUpd(my);kdraw()}
-function kwin(){const mine=K.win===kme;$('wi').textContent=mine?'🏆':'💪';$('wt').textContent=mine?'مبروك! أنت الفائز 🎉':'انتهت اللعبة — فاز خصمك';
- $('wm').textContent=mine?'أداء رائع! ضرباتك كانت دقيقة ⭐':'لا بأس، لعبة جميلة! كل مباراة تجعلك أقوى والفرصة قادمة 🌟';
- $('wd').innerHTML=[['النتيجة',mine?'أنت الفائز':'فاز خصمك'],['نقاطك',kme==='w'?K.sw:K.sb],['نقاط الخصم',kme==='w'?K.sb:K.sw],['عدد الضربات',K.n]].map(r=>'<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>').join('');$('win').classList.add('on');sfx(mine?'win':'lose');if(mine)confetti()}
+ $('kbar').innerHTML=K.win==='t'?'🤝 تعادل':K.win?`🏆 فاز <b>${K.win===kme?'أنت':'خصمك'}</b>`:(my?'<b>دورك</b> — اسحب للخلف ثم أفلت لتضرب':'بانتظار خصمك…')+(K.bl?'':' (لم ينضم الخصم بعد)');
+ const kl=K.c.filter((v,i)=>i%4===3&&v===1).length;$('kinfo').textContent='🎯 حصلتَ على '+(kme==='w'?K.cw:K.cb||0)+' قطعة ('+(kme==='w'?K.sw:K.sb)+' نقطة) · حصل الخصم على '+(kme==='w'?K.cb:K.cw||0)+' ('+(kme==='w'?K.sb:K.sw)+') · المتبقي: '+kl;
+ $('cs').style.visibility=my?'visible':'hidden';ccoachUpd(my);kdraw();cpuTick('k')}
+function kwin(){const t=K.win==='t',mine=K.win===kme,my=kme==='w'?[K.cw,K.sw]:[K.cb,K.sb],op=kme==='w'?[K.cb,K.sb]:[K.cw,K.sw];$('wi').textContent=t?'🤝':mine?'🏆':'💪';$('wt').textContent=t?'تعادل!':mine?'مبروك! أنت الفائز 🎉':'انتهت اللعبة — فاز خصمك';
+ $('wm').textContent=t?'لعبة متكافئة 👏':mine?'أداء رائع! ضرباتك كانت دقيقة ⭐':'لا بأس، لعبة جميلة! كل مباراة تجعلك أقوى والفرصة قادمة 🌟';
+ $('wd').innerHTML=[['النتيجة',t?'تعادل':mine?'أنت الفائز':'فاز خصمك'],['قطعك / نقاطك',(my[0]||0)+' / '+my[1]],['قطع الخصم / نقاطه',(op[0]||0)+' / '+op[1]],['عدد الضربات',K.n]].map(r=>'<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>').join('');$('win').classList.add('on');sfx(t?'move':mine?'win':'lose');if(mine)confetti()}
 function crestart(sw){sw=sw&&K.bl;kref.set(kinit(sw?K.bl:K.w,sw?K.w:K.bl))}$('knew').onclick=()=>{if(confirm('بدء لعبة كيرم جديدة؟'))crestart(false)};
 // ---------- Jackaroo (simplified, 2 players) ----------
 const JO={w:0,b:28},JR=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];let J=null,jme='w',jref=null,jwk='',jc=null;
@@ -568,7 +581,7 @@ function jmoves(G,sd,card,amt){const o=jopp(sd),mi=jmy(sd),oi=jmy(o),out=[],oppA
  else if(card==='J')mi.forEach(i=>{if(G.m[i]>=0&&G.m[i]<56)oi.forEach(k=>{if(G.m[k]>=0&&G.m[k]<56)out.push({mi:i,oi:k,sw:1})})});return out}
 const jplay=(G,sd,c)=>c==='A'?jmoves(G,sd,'A',1).concat(jmoves(G,sd,'A',11).filter(m=>G.m[m.mi]>=0)):jmoves(G,sd,c);
 function japply(G,sd,card,mv){const n=clone(G),h=n[JH(sd)],o=jopp(sd);h.splice(h.indexOf(card),1);
- if(mv){if(mv.sw){const a=jabs(sd,n.m[mv.mi]),b=jabs(o,n.m[mv.oi]);n.m[mv.mi]=(b-JO[sd]+56)%56;n.m[mv.oi]=(a-JO[o]+56)%56}else{n.m[mv.mi]=mv.to;if(mv.cap>=0)n.m[mv.cap]=-1}}
+ if(mv){if(mv.sw){const a=jabs(sd,n.m[mv.mi]),b=jabs(o,n.m[mv.oi]);n.m[mv.mi]=(b-JO[sd]+56)%56;n.m[mv.oi]=(a-JO[o]+56)%56}else{n.m[mv.mi]=mv.to;if(mv.cap>=0){n.m[mv.cap]=-1;n['x'+sd]=(n['x'+sd]||0)+1}}}
  n.n++;n.turn=o;n.last=card;if(jmy(sd).every(i=>n.m[i]>=56))n.win=sd;
  if(!n.hw.length&&!n.hb.length){if(n.dk.length<8)n.dk=jdeck();n.hw=n.dk.splice(0,4);n.hb=n.dk.splice(0,4)}return n}
 function jsave(n){J=n;jc=null;jrender();jref.set(n)}
@@ -595,7 +608,7 @@ function jsvg(){const o=jopp(jme),mv=jcur(),hl=new Set(),tg=new Set();
 function jrender(){if(!J)return;if(J.win){const k=J.win+'|'+J.n;if(jwk!==k){jwk=k;jwin()}}else{jwk='';if(curGame==='jak')$('win').classList.remove('on')}
  const my=J.turn===jme&&!J.win,h=J[JH(jme)];turnPing('j',my);gsnd('j',J.n,()=>sfx('card'));
  $('jbar').innerHTML=J.win?`🏆 فاز <b>${J.win===jme?'أنت':'خصمك'}</b>`:(my?'<b>دورك</b> — اختر ورقة':'بانتظار خصمك…')+(J.bl?'':' (لم ينضم الخصم بعد)')+' · لونك '+(jme==='w'?'🔵':'🟠');
- $('jinfo').textContent='أوراق الخصم: '+J[JH(jopp(jme))].length+' · السحب: '+J.dk.length+(J.last?' · آخر ورقة: '+J.last:'');
+ $('jinfo').textContent='🎯 أكلتَ '+(J['x'+jme]||0)+' · 💔 أُكلتَ '+(J['x'+jopp(jme)]||0)+' · في الأمان: '+jmy(jme).filter(i=>J.m[i]>=56).length+'/4 (الخصم '+jmy(jopp(jme)).filter(i=>J.m[i]>=56).length+'/4) · أوراق الخصم: '+J[JH(jopp(jme))].length+' · السحب: '+J.dk.length;
  $('jbd').innerHTML=jsvg();$('jbd').querySelectorAll('[data-i]').forEach(e=>e.onclick=()=>jclick(+e.dataset.i));
  const any=my&&h.some(c=>jplay(J,jme,c).length),hd=$('jhand');hd.innerHTML='';
  h.forEach(c=>{const e=document.createElement('div'),ok=my&&(any?jplay(J,jme,c).length>0:true);e.className='jc '+(ok?'ok':'no');e.textContent=c;if(jc&&jc.card===c)e.style.transform='translateY(-10px)';
@@ -604,13 +617,82 @@ function jrender(){if(!J)return;if(J.win){const k=J.win+'|'+J.n;if(jwk!==k){jwk=
  else if(my&&jc){const bt=(x,f)=>{const b=document.createElement('button');b.textContent=x;b.onclick=f;ac.append(b)};
   if(jc.card==='A'&&jc.amt==null){const has=a=>jmoves(J,jme,'A',a).some(m=>a===0?J.m[m.mi]===-1:J.m[m.mi]>=0);if(jmoves(J,jme,'A',1).some(m=>J.m[m.mi]===-1))bt('إخراج حجر',()=>{jc.amt=0;jrender()});if(has(1))bt('+1',()=>{jc.amt=1;jrender()});if(jmoves(J,jme,'A',11).some(m=>J.m[m.mi]>=0))bt('+11',()=>{jc.amt=11;jrender()})}
   else ac.textContent=jc.card==='J'?(jc.mi==null?'اختر حجرك الذي تريد تبديله':'اختر حجر الخصم'):'اضغط الحجر المضيء لتحريكه';bt('✕ إلغاء',()=>{jc=null;jrender()})}
- jcoachUpd(my,any)}
+ jcoachUpd(my,any);cpuTick('j')}
 function jwin(){const mine=J.win===jme;$('wi').textContent=mine?'🏆':'💪';$('wt').textContent=mine?'مبروك! أنت الفائز 🎉':'انتهت اللعبة — فاز خصمك';
  $('wm').textContent=mine?'أداء رائع! أوصلت كل أحجارك إلى الأمان ⭐':'لا بأس، لعبة جميلة! كل مباراة تجعلك أقوى والفرصة قادمة 🌟';
  $('wd').innerHTML=[['النتيجة',mine?'أنت الفائز':'فاز خصمك'],['عدد الأدوار',J.n],['أحجارك في الأمان',jmy(jme).filter(i=>J.m[i]>=56).length],['أحجار الخصم في الأمان',jmy(jopp(jme)).filter(i=>J.m[i]>=56).length]].map(r=>'<div><span>'+r[0]+'</span><b>'+r[1]+'</b></div>').join('');$('win').classList.add('on');sfx(mine?'win':'lose');if(mine)confetti()}
 function jrestart(sw){sw=sw&&J.bl;jref.set(jinit(sw?J.bl:J.w,sw?J.w:J.bl))}$('jnew').onclick=()=>{if(confirm('بدء لعبة جاكارو جديدة؟'))jrestart(false)};
 // ---------- shared coach toggle + in-game chat ----------
 function tcoach(){coachOn=!coachOn;ls('coach',coachOn?'1':'0');applyTh();[render,drender,urender,krender,jrender].forEach(f=>{try{f()}catch(e){}})}document.querySelectorAll('.cb2').forEach(b=>b.onclick=tcoach);applyTh();
+// ---------- play vs computer ----------
+const cpuBusy={};
+function startVs(g,cpu){if(!confirm(cpu?'سيبدأ لعب جديد ضد الكمبيوتر. متأكد؟':'سيبدأ لعب جديد بانتظار صديقك. متأكد؟'))return;const b=cpu?'cpu':'';
+ if(g==='chess')gameRef.set({b:START(),turn:'w',w:uid,bl:b,last:[],n:0,win:'',cr:'KQkq',ep:-1,why:''});else if(g==='dom')dref.set(dinit(uid,b));else if(g==='uno')uref.set(uinit(uid,b));else if(g==='car')kref.set(kinit(uid,b));else if(g==='jak')jref.set(jinit(uid,b))}
+function paintOff(){const S={chess:G0,dom:D,uno:U,car:K,jak:J}[curGame],b=$('offb');if(!S||!uid){b.style.display='none';return}
+ const off=!peerSeen||Date.now()-peerSeen>45000;
+ if(S.bl==='cpu'){b.style.display='block';$('offt').textContent=S.w===uid?'🤖 تلعب ضد الكمبيوتر':'🤖 الخصم يلعب ضد الكمبيوتر الآن';$('offg').textContent='👤 العب ضد صديقك';$('offg').onclick=()=>startVs(curGame,false)}
+ else if(off){b.style.display='block';$('offt').textContent='🔴 الخصم غير متصل';$('offg').textContent='🤖 العب ضد الكمبيوتر';$('offg').onclick=()=>startVs(curGame,true)}
+ else b.style.display='none'}
+const CPU={
+ c:()=>{if(!G0||G0.turn!=='b'||G0.win)return;const m=best(G0);if(!m)return;const sv=me;me='b';sel=null;cmove(m[0],m[1],'Q');me=sv;render()},
+ d:()=>{if(!D||D.turn!=='b'||D.win)return;const sv=dme;dme='b';const b=dbest();if(b)dplay(b.t,D.ch.length?b.sd:'r');else if(D.bn.length)ddraw();else dpass();dme=sv;drender()},
+ u:()=>{if(!U||U.turn!=='b'||U.win)return;const sv=ume;ume='b';const b=ubest();if(b)uplay(b.i,b.c[0]==='w'?b.col:undefined);else if(U.dr)upass();else udraw();ume=sv;urender()},
+ k:()=>{if(!K||K.turn!=='b'||K.win||kmine)return;const b=cbest();kfire(b.x,b.ax,b.ay,b.pw)},
+ j:()=>{if(!J||J.turn!=='b'||J.win)return;const sv=jme;jme='b';const b=jbest();jme=sv;if(b)jsave(japply(J,'b',b.c,b.m));else if(J.hb.length)jsave(japply(J,'b',J.hb[0],null))}};
+function cpuTick(g){paintOff();const S={c:G0,d:D,u:U,k:K,j:J}[g];if(!S||S.bl!=='cpu'||S.w!==uid||S.win||S.turn!=='b'||cpuBusy[g])return;cpuBusy[g]=1;setTimeout(()=>{cpuBusy[g]=0;try{CPU[g]()}catch(e){console.error(e)}},g==='k'?600:1000)}
+// ---------- voice / video calls (WebRTC) ----------
+let pc=null,lstream=null,callId='',inCall=false,pendI=[],ringI=null,ringT=null,callT=null,iceN=0,myIce=[],callRef=null,iceCol=null,cStart=0,incoming=null;
+const ICE={iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}]},fmt=n=>String(n/60|0).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
+function callUI(t,inc){$('call').classList.add('on');$('cst').textContent=t;$('cacc').style.display=inc?'':'none';$('cmute').style.display=inc?'none':'';$('ccam').style.display=inc?'none':''}
+function stopRing(){clearInterval(ringI);ringI=null}
+function ringLoop(){stopRing();const r=()=>{try{SFX.turn()}catch(e){}navigator.vibrate&&navigator.vibrate(200)};r();ringI=setInterval(r,1500)}
+async function mkPc(type){lstream=await navigator.mediaDevices.getUserMedia({audio:true,video:type==='video'?{facingMode:'user'}:false});$('lv').srcObject=lstream;$('lv').style.display=type==='video'?'block':'none';
+ pc=new RTCPeerConnection(ICE);lstream.getTracks().forEach(t=>pc.addTrack(t,lstream));pc.ontrack=e=>{$('rv').srcObject=e.streams[0]};
+ pc.onicecandidate=e=>{if(e.candidate){const id=callId+'_'+uid+'_'+(iceN++);myIce.push(id);iceCol.doc(id).set({call:callId,u:uid,c:JSON.stringify(e.candidate),t:Date.now()}).catch(()=>{})}};
+ pc.onconnectionstatechange=()=>{if(!pc)return;if(pc.connectionState==='connected'){cStart=Date.now();clearTimeout(ringT);clearInterval(callT);callT=setInterval(()=>{$('cst').textContent='🟢 '+fmt((Date.now()-cStart)/1000|0)},1000)}if(['failed','closed'].includes(pc.connectionState))endCall(true)}}
+function flushIce(){while(pendI.length&&pc)pc.addIceCandidate(pendI.shift()).catch(()=>{})}
+async function startCall(type){if(inCall)return;if(!navigator.mediaDevices||!window.RTCPeerConnection)return alert('هذا المتصفح لا يدعم الاتصال');inCall=true;callId='c'+Date.now();iceN=0;myIce=[];pendI=[];
+ try{await mkPc(type)}catch(e){inCall=false;callId='';return alert('لا يوجد إذن للكاميرا أو المايكروفون')}
+ callUI('📞 جاري الاتصال…',false);const o=await pc.createOffer();await pc.setLocalDescription(o);
+ callRef.set({id:callId,from:uid,type,state:'ringing',offer:JSON.stringify(pc.localDescription),t:Date.now()});ringT=setTimeout(()=>{if(inCall&&!cStart)endCall(true)},45000)}
+async function acceptCall(){const d=incoming;incoming=null;stopRing();inCall=true;iceN=0;myIce=[];pendI=[];
+ try{await mkPc(d.type)}catch(e){callRef.update({state:'ended'});inCall=false;$('call').classList.remove('on');return alert('لا يوجد إذن للكاميرا أو المايكروفون')}
+ await pc.setRemoteDescription(JSON.parse(d.offer));flushIce();const a=await pc.createAnswer();await pc.setLocalDescription(a);callRef.update({state:'active',answer:JSON.stringify(pc.localDescription)});callUI('🔄 جاري الربط…',false)}
+function endCall(notify){stopRing();clearTimeout(ringT);clearInterval(callT);if(notify&&callId)callRef.update({state:'ended'}).catch(()=>{});try{pc&&pc.close()}catch(e){}pc=null;lstream&&lstream.getTracks().forEach(t=>t.stop());lstream=null;$('rv').srcObject=null;$('call').classList.remove('on');inCall=false;incoming=null;cStart=0;myIce.forEach(id=>iceCol.doc(id).delete().catch(()=>{}));myIce=[];callId=''}
+$('callA').onclick=()=>startCall('audio');$('callV').onclick=()=>startCall('video');$('cacc').onclick=acceptCall;$('cend').onclick=()=>endCall(true);
+$('cmute').onclick=()=>{const t=lstream&&lstream.getAudioTracks()[0];if(t){t.enabled=!t.enabled;$('cmute').textContent=t.enabled?'🎤':'🔇'}};
+$('ccam').onclick=()=>{const t=lstream&&lstream.getVideoTracks()[0];if(t){t.enabled=!t.enabled;$('ccam').textContent=t.enabled?'📷':'🚫'}};
+// ---------- secure vault (long-press the 🎮 icon) ----------
+let vk=null,vdb=null,vcur=null,vurl=null;const vTE=new TextEncoder();
+const vidb=()=>vdb?Promise.resolve(vdb):new Promise((res,rej)=>{const r=indexedDB.open('vault',1);r.onupgradeneeded=()=>{r.result.createObjectStore('items',{keyPath:'id'});r.result.createObjectStore('meta')};r.onsuccess=()=>{vdb=r.result;res(vdb)};r.onerror=()=>rej(r.error)});
+const vtx=async(st,mode,fn)=>{const d=await vidb();return new Promise((res,rej)=>{const t=d.transaction(st,mode),r=fn(t.objectStore(st));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error)})};
+async function vkey(pin,salt){const b=await crypto.subtle.importKey('raw',vTE.encode(pin),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:200000,hash:'SHA-256'},b,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function aenc(buf){const iv=crypto.getRandomValues(new Uint8Array(12));return{iv,c:await crypto.subtle.encrypt({name:'AES-GCM',iv},vk,buf)}}
+const adec=(iv,c)=>crypto.subtle.decrypt({name:'AES-GCM',iv},vk,c);
+async function vopen(){if(!window.crypto||!crypto.subtle)return;$('vault').classList.add('on');$('vgrid').style.display='none';$('vlk').style.display='flex';$('vin').value='';const m=await vtx('meta','readonly',s=>s.get('chk'));$('vgo').textContent=m?'فتح':'إنشاء الخزنة';$('vmsg').textContent=m?'':'اختر رقماً سرياً (لا يمكن استرجاعه إن نسيته)';$('vin').focus()}
+$('vgo').onclick=async()=>{const pin=$('vin').value;if(pin.length<4){$('vmsg').textContent='الرقم 4 خانات على الأقل';return}const m=await vtx('meta','readonly',s=>s.get('chk'));
+ try{if(!m){const salt=crypto.getRandomValues(new Uint8Array(16));vk=await vkey(pin,salt);const e=await aenc(vTE.encode('ok'));await vtx('meta','readwrite',s=>s.put({salt,iv:e.iv,c:e.c},'chk'))}else{vk=await vkey(pin,m.salt);await adec(m.iv,m.c)}}catch(e){vk=null;$('vmsg').textContent='❌ رقم خاطئ';return}
+ $('vin').value='';$('vlk').style.display='none';$('vgrid').style.display='grid';vrender()};
+$('vin').onkeydown=e=>{if(e.key==='Enter')$('vgo').click()};
+async function vrender(){const g=$('vgrid');g.innerHTML='';const it=(await vtx('items','readonly',s=>s.getAll()))||[];it.sort((a,b)=>b.t-a.t);
+ if(!it.length){g.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--mu);padding:30px">الخزنة فارغة — اضغط ＋ إضافة</div>';return}
+ for(const x of it){const d=document.createElement('div');d.className='tl';d.onclick=()=>vshow(x.id);if(x.tc){try{const b=await adec(x.tiv,x.tc),im=document.createElement('img');im.src=URL.createObjectURL(new Blob([b],{type:'image/jpeg'}));d.append(im)}catch(e){d.textContent='🖼️'}}else d.textContent=(x.type||'').startsWith('video')?'🎬':'📄';g.append(d)}}
+$('vadd').onclick=()=>$('vfi').click();
+$('vfi').onchange=async e=>{const fs=[...e.target.files];e.target.value='';let n=0;for(const f of fs){if(f.size>300e6){alert('الملف '+f.name+' كبير جداً (الحد 300MB)');continue}
+ try{const en=await aenc(await f.arrayBuffer()),it={id:'v'+Date.now()+Math.random().toString(36).slice(2,6),name:f.name,type:f.type,size:f.size,t:Date.now(),iv:en.iv,c:en.c};
+  if(f.type.startsWith('image/')){try{const bm=await createImageBitmap(f),k=Math.min(1,200/Math.max(bm.width,bm.height)),cv=document.createElement('canvas');cv.width=bm.width*k;cv.height=bm.height*k;cv.getContext('2d').drawImage(bm,0,0,cv.width,cv.height);const tb=await new Promise(r=>cv.toBlob(r,'image/jpeg',.7)),te=await aenc(await tb.arrayBuffer());it.tiv=te.iv;it.tc=te.c}catch(x){}}
+  await vtx('items','readwrite',s=>s.put(it));n++}catch(x){alert('تعذر إضافة '+f.name)}}
+ if(n){vrender();alert('تمت إضافة '+n+' ملف وتشفيرها ✅\nالأصل ما زال في معرض جوالك، احذفه بنفسك إن أردت إخفاءه تماماً.')}};
+async function vshow(id){const it=await vtx('items','readonly',s=>s.get(id));if(!it)return;try{const b=await adec(it.iv,it.c);vcur=it;vurl=URL.createObjectURL(new Blob([b],{type:it.type||'application/octet-stream'}));const body=$('vbody');body.innerHTML='';const v=(it.type||'').startsWith('video/'),el=document.createElement(v?'video':'img');if(v){el.controls=true;el.autoplay=true;el.playsInline=true}el.src=vurl;body.append(el);$('vview').classList.add('on')}catch(e){alert('تعذر فك التشفير')}}
+$('vx').onclick=()=>{$('vview').classList.remove('on');$('vbody').innerHTML='';vurl&&URL.revokeObjectURL(vurl);vurl=null};
+$('vdl').onclick=async()=>{if(!vcur||!confirm('حذف هذا الملف نهائياً من الخزنة؟'))return;await vtx('items','readwrite',s=>s.delete(vcur.id));$('vx').click();vrender()};
+$('vsv').onclick=async()=>{if(!vcur)return;const b=await adec(vcur.iv,vcur.c);fsave(vcur.name||'file',new Blob([b],{type:vcur.type}))};
+function vlock(){vk=null;$('vault').classList.remove('on');$('vx').click();$('vgrid').innerHTML=''}$('vcl').onclick=vlock;
+(()=>{const e=$('vtrig');let t=null;const x=()=>clearTimeout(t);e.addEventListener('pointerdown',()=>{t=setTimeout(vopen,800)});['pointerup','pointermove','pointercancel','pointerleave'].forEach(k=>e.addEventListener(k,x));e.addEventListener('contextmenu',ev=>ev.preventDefault())})();
+// ---------- chess stats ----------
+const GL={P:'♟',N:'♞',B:'♝',R:'♜',Q:'♛'},IC={P:8,N:2,B:2,R:2,Q:1};
+function cstat(){const el=$('cstatb');if(!G0)return;const miss=c=>{const cnt={P:0,N:0,B:0,R:0,Q:0};G0.b.forEach(p=>{if(p&&p[0]===c&&cnt[p[1]]!==undefined)cnt[p[1]]++});let n=0,t='';for(const k in IC){const m=Math.max(0,IC[k]-cnt[k]);n+=m;if(m)t+=GL[k].repeat(m)}return[n,t]},[a,as]=miss(me==='w'?'b':'w'),[b,bs]=miss(me);
+ el.innerHTML='🎯 أخذتَ <b>'+a+'</b> '+as+' · 💔 خسرتَ <b>'+b+'</b> '+bs}
 // ---------- boot ----------
 (async()=>{
  const user=await claude.use('user'),dbn=await claude.use('db');
@@ -625,7 +707,7 @@ function tcoach(){coachOn=!coachOn;ls('coach',coachOn?'1':'0');applyTh();[render
   const pm=me;me=d.w===uid?'w':d.bl===uid?'b':'w';if(pm!==me)az=null;if(d.w!==uid&&d.bl!==uid){$('nt').textContent='اللعبة ممتلئة (لاعبان فقط) — أنت مشاهد'}
   if(!Array.isArray(d.b)||d.b.length!==64)return;if(d.cr===undefined)d.cr=dcr(d.b);if(d.ep===undefined)d.ep=-1;G0=d;sel=null;hints=[];render()});
  chatCol.orderBy('t','asc').limit(500).onSnapshot(q=>{let un=false;q.docChanges().forEach(c=>{const id=c.doc.id;if(c.type==='removed'){delete MS[id];const e=document.getElementById(id);e&&e.remove();return}
-   const d=c.doc.data();MS[id]=d;if(ready&&c.type==='added'&&d.u!==uid)beep('msg');if(archT&&d.u!==uid&&d.t>archT){archT=0;ls('arch',null);un=true}addMsg(d,id,c.type==='modified')});if(un)renderAll();$('arc').style.display=archT?'block':'none';ready=true;filt()});
+   const d=c.doc.data();MS[id]=d;if(ready&&c.type==='added'&&d.u!==uid)beep('msg');if(archT&&d.u!==uid&&d.t>archT){archT=0;ls('arch',null);un=true}addMsg(d,id,c.type==='modified')});if(un)renderAll();$('arc').style.display=archT?'block':'none';ready=true;filt();paintBadge()});
   dref=db.doc('games/domino');dref.onSnapshot(async q=>{let d=q.data();if(!d){d=dinit(uid,'');await dref.set(d)}else if(d.w!==uid&&!d.bl){d.bl=uid;dref.update({bl:uid})}
   dme=d.w===uid?'w':d.bl===uid?'b':'w';if(!Array.isArray(d.hw)||!Array.isArray(d.ch))return;D=d;dsel=null;drender()});
 
@@ -640,6 +722,12 @@ function tcoach(){coachOn=!coachOn;ls('coach',coachOn?'1':'0');applyTh();[render
   kjob++;K=d;kcoach=null;kx=kme==='b'?200:200;krender()});
  jref=db.doc('games/jackaroo');jref.onSnapshot(async q=>{let d=q.data();if(!d){d=jinit(uid,'');await jref.set(d)}else if(d.w!==uid&&!d.bl){d.bl=uid;jref.update({bl:uid})}
   jme=d.w===uid?'w':d.bl===uid?'b':'w';if(!Array.isArray(d.m))return;J=d;jc=null;jrender()});
+ callRef=db.doc('meta/call');iceCol=db.collection('ice');
+ callRef.onSnapshot(async q=>{const d=q.data();if(!d)return;
+  if(d.state==='ringing'&&d.from!==uid&&!inCall&&!incoming&&Date.now()-d.t<60000){incoming=d;callId=d.id;callUI((d.type==='video'?'🎥':'📞')+' مكالمة واردة…',true);ringLoop()}
+  else if(d.id===callId&&inCall&&d.from===uid&&d.state==='active'&&d.answer&&pc&&!pc.remoteDescription){await pc.setRemoteDescription(JSON.parse(d.answer));flushIce()}
+  if(d.state==='ended'&&d.id===callId&&(inCall||incoming))endCall(false)});
+ iceCol.orderBy('t','asc').limit(300).onSnapshot(q=>{q.docChanges().forEach(c=>{if(c.type!=='added')return;const d=c.doc.data();if(d.u===uid||d.call!==callId)return;const cand=JSON.parse(d.c);if(pc&&pc.remoteDescription)pc.addIceCandidate(cand).catch(()=>{});else pendI.push(cand)})});
  readRef.onSnapshot(q=>{const d=q.data()||{};window._rd=d;const ot=Object.entries(d).filter(([k])=>k!==uid).map(([,v])=>v);peerRead=ot.length?Math.max(...ot):0;paintTicks()});
  ping();setInterval(ping,20000);
  $('nt').textContent='🟢 متصل بقاعدة Firebase';
