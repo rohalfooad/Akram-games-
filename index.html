@@ -85,7 +85,7 @@ body[data-th=night]{--lt:#9aa4d6;--dk:#343a78;--bd:#12143a}body[data-th=marble]{
 #ckeys{display:grid;grid-template-columns:repeat(4,1fr);padding:8px 8px 22px}#ckeys button{height:72px;font-size:28px;border-radius:36px;background:#3c4043;color:#fff;margin:4px}#ckeys .op{background:#8ab4f8;color:#202124}#ckeys .fn{background:#5f6368}
 #vtabs{display:flex;gap:6px;padding:6px 10px}#vtabs button.on{background:var(--ac);color:#fff}#vact{display:none;gap:8px;align-items:center;padding:8px 12px;background:var(--bg2)}#vact span{flex:1}#vgrid .tl.sel{outline:4px solid var(--ac2);outline-offset:-4px}#vault.on #vgrid{display:grid!important}
 #vtrig,#vmic{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:manipulation}
-#vmic{position:absolute;bottom:10px;left:10px;z-index:3;width:52px;height:52px;border-radius:50%;font-size:24px;padding:0;background:#555;color:#fff}#vmic.on{background:#2e7d32}#vmic.talk{animation:hnt .6s infinite alternate}#s1{position:relative}
+#vmic{width:26px;height:26px;min-width:26px;border-radius:50%;font-size:14px;line-height:1;padding:0;border:0;background:#e53935;color:#fff}#vmic.on{background:#2e7d32}#vmic.talk{animation:hnt .6s infinite alternate}#s1{position:relative}
 #uopp{display:flex;justify-content:center;height:68px;direction:ltr;padding-top:4px}#uopp .uc{width:40px;height:60px;font-size:12px;margin-inline-start:-24px;flex:none}#uopp .uc:first-child{margin-inline-start:0}
 .uc.back{background:repeating-linear-gradient(45deg,#1b1b1b,#1b1b1b 6px,#2c2c2c 6px,#2c2c2c 12px)!important;color:#e53935;font-size:14px}
 #uhand{display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:center;justify-content:safe center;gap:0;padding:16px 20px 10px;direction:ltr;max-height:none}#uhand .uc{margin-inline-start:-16px}#uhand .uc:first-child{margin-inline-start:0}.uc.fly{position:fixed;z-index:9;margin:0;pointer-events:none;transform-origin:center}
@@ -141,7 +141,7 @@ window._fbr();
 <div id="win"><canvas id="cf"></canvas><div class="card"><div id="wi" style="font-size:64px"></div><h2 id="wt"></h2><p id="wm"></p><div id="wd"></div><div class="wb"><button id="again">🔄 العب من جديد</button><button id="exit">🚪 خروج</button></div></div></div>
 <div id="clock"><div style="font-size:60px">🔐</div><div id="clt">أدخل رقم قفل الدردشة</div><input id="cpn" type="password" inputmode="numeric" maxlength="8"><button id="cok" style="background:var(--ac);color:#fff">فتح</button><button id="cbk">رجوع</button></div>
 <div id="lock"><div style="font-size:60px">🔒</div><div id="lt">أدخل الرقم السري</div><input id="pin" type="password" inputmode="numeric" maxlength="8"><button id="lb" style="background:var(--ac);color:#fff">فتح</button></div>
-<header><div id="vtrig" style="font-size:26px;user-select:none;-webkit-user-select:none">🎮</div><div><b id="ttl">ملك وملكة</b><small id="st"></small></div><div class="sp"></div><button id="sndBtn">🔔</button><button id="outBtn">🚪</button><button id="chBtn">💬</button><button id="lockBtn">🔒</button></header>
+<header><div id="vtrig" style="font-size:26px;user-select:none;-webkit-user-select:none">🎮</div><div><b id="ttl">ملك وملكة</b><div style="display:flex;align-items:center;gap:6px"><small id="st"></small><button id="vmic" title="المايك">🎙</button></div></div><div class="sp"></div><button id="sndBtn">🔔</button><button id="outBtn">🚪</button><button id="chBtn">💬</button><button id="lockBtn">🔒</button></header>
 <nav><button id="n1" class="on">♟ اللعب</button><button id="n2" style="font-size:22px">💬<span id="bd"></span></button></nav>
 <main>
 <section id="s1" class="on">
@@ -156,7 +156,7 @@ window._fbr();
 <div id="car" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="kbar">…</div><div class="bar" id="kinfo"></div><div class="stage" style="padding:2px;perspective:none"><canvas id="cv" style="touch-action:none;border-radius:14px;box-shadow:0 10px 30px #0009"></canvas></div><div class="bar" id="kact"><input type="range" id="cs" min="60" max="340" value="200" style="width:75%"></div><div class="coach" id="ccoach"></div><div class="tb"><button class="cb2"></button><button id="knew">🔄 جديدة</button></div></div>
 <div id="jk" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="jbar">…</div><div class="bar" id="jinfo"></div><div id="jbd" style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center"></div><div class="bar" id="jact"></div><div id="jhand"></div><div class="coach" id="jcoach"></div><div class="tb"><button class="cb2"></button><button id="jnew">🔄 جديدة</button></div></div>
 <div id="pool" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="pbar">…</div><div class="bar" id="pinfo"></div><div id="pl3d"></div><div class="bar" id="pact"><input type="range" id="ppw" min="15" max="100" value="60" style="width:50%"> <button id="pfire" style="background:var(--ac);color:#fff">🎱 اضرب</button></div><div class="coach" id="pcoach"></div><div class="tb"><button class="cb2"></button><button id="pnew">🔄 جديدة</button></div></div>
-<button id="vmic">🔇</button><audio id="vra" autoplay playsinline></audio>
+<audio id="vra" autoplay playsinline></audio>
 
 </section>
 <section id="s2">
@@ -770,7 +770,7 @@ function ufx(){const cur={n:U.n,h:U[UH()].length,o:U[UO()].length,dc:U.dc.length
  if(cur.o>prev.o){const k=cur.o-prev.o,rs=hide(opp,k),oR=R(opp);let n=0;for(let i=0;i<k;i++)ufly(dR,cen(oR,oR.top),'XX',i*140,()=>{if(++n===k)rs()})}}
 // ---------- live mic room ----------
 const vm={pc:null,id:'',stream:null,mic:false,sender:null,pend:[],hb:null,lvl:null,last:''};let iceAll=[],voiceRef=null;
-function vmUI(){const b=$('vmic');b.textContent=vm.mic?'🎙':'🔇';b.classList.toggle('on',!!vm.pc);if(!vm.pc)b.classList.remove('talk')}
+function vmUI(){const b=$('vmic');b.textContent='🎙';b.classList.toggle('on',!!vm.mic);b.title=vm.mic?'الطرف الآخر يسمعك':'المايك مغلق';if(!vm.pc)b.classList.remove('talk')}
 function vmCreate(){vm.pc=new RTCPeerConnection(ICE);vm.sender=vm.pc.addTransceiver('audio',{direction:'sendrecv'}).sender;
  vm.pc.ontrack=e=>{const ms=new MediaStream([e.track]),a=$('vra');a.srcObject=ms;a.play&&a.play().catch(()=>{});vmLevel(ms)};
  vm.pc.onicecandidate=e=>{if(e.candidate){const id=vm.id+'_'+uid+'_'+(iceN++);iceCol.doc(id).set({call:vm.id,u:uid,c:JSON.stringify(e.candidate),t:Date.now()}).catch(()=>{})}};
@@ -899,7 +899,7 @@ $('pfire').onclick=()=>{if(!P||P.win||P.turn!==pme||pmine||!paim)return;pfire(pa
 })();
 // ---------- games home / navigation / exit / admin ----------
 const GN={chess:'شطرنج',dom:'دومينو',car:'كيرم',uno:'أونو',jak:'جاكارو',pool:'بلياردو'};
-function lpress2(el,fn,ms){let t=null;const x=()=>clearTimeout(t);el.addEventListener('pointerdown',()=>{t=setTimeout(fn,ms||800)});['pointerup','pointermove','pointercancel','pointerleave'].forEach(k=>el.addEventListener(k,x));el.addEventListener('contextmenu',e=>e.preventDefault())}
+function lpress2(el,fn,ms){let t=null,sx=0,sy=0;const x=()=>{clearTimeout(t);t=null};el.style.touchAction='none';el.style.webkitTouchCallout='none';el.style.userSelect='none';el.style.webkitUserSelect='none';el.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;x();t=setTimeout(()=>{t=null;try{navigator.vibrate&&navigator.vibrate(30)}catch(_){}fn()},ms||800)});el.addEventListener('pointermove',e=>{if(t&&Math.hypot(e.clientX-sx,e.clientY-sy)>24)x()});['pointerup','pointercancel'].forEach(k=>el.addEventListener(k,x));el.addEventListener('contextmenu',e=>e.preventDefault())}
 function home(){['chessv','dom','un','car','jk','pool'].forEach(i=>$(i).style.display='none');$('gbar0').style.display='none';$('home').style.display='grid';$('win').classList.remove('on')}
 const inGame=()=>$('home').style.display==='none';
 function openG(g){$('home').style.display='none';$('gbar0').style.display='flex';$('gname').textContent=GN[g];setGame(g);paintOff()}
