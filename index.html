@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ملك وملكة</title>
-<meta name="theme-color" content="#7c5cff"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#7c5cff"><link rel="manifest" id="mf"><script>(function(){try{if(!/^https?:/.test(location.protocol))return;var u=function(p){return new URL(p,location.href).href};var m={name:"ملك وملكة",short_name:"ملك وملكة",lang:"ar",dir:"rtl",start_url:u("./"),scope:u("./"),display:"standalone",orientation:"portrait",background_color:"#0a0820",theme_color:"#7c5cff",icons:[{src:u("icon-192.png"),sizes:"192x192",type:"image/png",purpose:"any maskable"}]};document.getElementById("mf").href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}))}catch(e){}})()</script><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <style>
 :root{--bg:#0a0820;--bg2:#1a1245;--card:#251b58;--tx:#f7f4ff;--mu:#b3acdf;--ac:#8b5cf6;--ac2:#f5c76b;--lt:#e8d9b5;--dk:#7a5a3a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box}html,body{height:100%;margin:0}
@@ -128,6 +128,10 @@ button{background:linear-gradient(180deg,#43388f,#251d5c)!important}
 body.nocoach .dt.ok,body.nocoach .uc.ok,body.nocoach .jc.ok{outline:0!important}
 body.nocoach .dt.no,body.nocoach .uc.no,body.nocoach .jc.no{opacity:1!important}
 body.nocoach .dt.hint,body.nocoach .uc.hint,body.nocoach .jc.hint{animation:none!important;transform:none!important}
+#vmic .eq{transform-box:fill-box;transform-origin:center}
+#vmic.talk svg{animation:none!important}
+#vmic.talk .eq{animation:eqb .5s ease-in-out infinite alternate}#vmic.talk .e2{animation-delay:.12s}#vmic.talk .e3{animation-delay:.24s}#vmic.talk .e4{animation-delay:.06s}
+@keyframes eqb{from{transform:scaleY(.5)}to{transform:scaleY(1.45)}}
 </style></head><body>
 <script>window.dInst=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.dInst=e});addEventListener('appinstalled',()=>{window.dInst=null});
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol)&&!window.AndroidHider)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));</script>
@@ -162,11 +166,11 @@ window._fbr();
 <div id="win"><canvas id="cf"></canvas><div class="card"><div id="wi" style="font-size:64px"></div><h2 id="wt"></h2><p id="wm"></p><div id="wd"></div><div class="wb"><button id="again">🔄 العب من جديد</button><button id="exit">🚪 خروج</button></div></div></div>
 <div id="clock"><div style="font-size:60px">🔐</div><div id="clt">أدخل رقم قفل الدردشة</div><input id="cpn" type="password" inputmode="numeric" maxlength="8"><button id="cok" style="background:var(--ac);color:#fff">فتح</button><button id="cbk">رجوع</button></div>
 <div id="lock"><div style="font-size:60px">🔒</div><div id="lt">أدخل الرقم السري</div><input id="pin" type="password" inputmode="numeric" maxlength="8"><button id="lb" style="background:var(--ac);color:#fff">فتح</button></div>
-<header><div id="vtrig" style="font-size:26px;user-select:none;-webkit-user-select:none">👑</div><div><b style="font-size:19px;letter-spacing:.3px">ملك وملكة</b></div><div class="sp"></div><button id="sndBtn">🔔</button><button id="outBtn">🚪</button><button id="chatBtn">💬<span id="bd"></span></button><button id="lockBtn">🔒</button></header>
+<header><div id="vtrig" style="font-size:26px;user-select:none;-webkit-user-select:none">👑</div><div><b style="font-size:19px;letter-spacing:.3px">ملك وملكة</b></div><div class="sp"></div><button id="sndBtn">🔔</button><button id="outBtn">🚪</button><button id="chatBtn">✦<span id="bd"></span></button><button id="lockBtn">🔒</button></header>
 
 <main>
 <section id="s1" class="on">
-<div id="home"></div><div id="gpage" style="display:none"><div id="gtop"><button id="gback">→</button><b id="gtitle"></b><span class="sp"></span><button id="wf" class="wf off" title="الاتصال"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="19" r="2" fill="currentColor"/><path d="M8.2 15.4a5.4 5.4 0 017.6 0M4.6 11.8a10.5 10.5 0 0114.8 0M1.2 8.2a15.4 15.4 0 0121.6 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button><button id="vmic" title="الصوت المباشر"><i class="rg"></i><i class="rg r2"></i><svg viewBox="0 0 24 24" width="22" height="22"><rect x="9" y="2.5" width="6" height="12" rx="3" fill="currentColor"/><path d="M5.5 11.5a6.5 6.5 0 0013 0M12 18v3.5M8.5 21.5h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+<div id="home"></div><div id="gpage" style="display:none"><div id="gtop"><button id="gback">→</button><b id="gtitle"></b><span class="sp"></span><button id="wf" class="wf off" title="الاتصال"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="19" r="2" fill="currentColor"/><path d="M8.2 15.4a5.4 5.4 0 017.6 0M4.6 11.8a10.5 10.5 0 0114.8 0M1.2 8.2a15.4 15.4 0 0121.6 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button><button id="vmic" title="الصوت المباشر"><i class="rg"></i><i class="rg r2"></i><svg viewBox="0 0 24 24" width="22" height="22"><g fill="currentColor"><rect class="eq e1" x="3" y="9" width="3.4" height="6" rx="1.7"/><rect class="eq e2" x="8.6" y="4" width="3.4" height="16" rx="1.7"/><rect class="eq e3" x="14.2" y="7" width="3.4" height="10" rx="1.7"/><rect class="eq e4" x="19.6" y="10" width="2.4" height="4" rx="1.2"/></g></svg></button></div>
 <div id="pstrip"><div class="pl" id="plo"><div class="av" id="avo">👑</div><span id="nmo"></span></div><div class="vs">VS</div><div class="pl" id="plm"><div class="av" id="avm">👑</div><span id="nmm"></span></div></div>
 <div id="chessv" style="display:contents"><div class="bar" id="bar">…</div><div class="bar" id="cstatb"></div><div class="coach" id="coach"></div>
 <div class="stage"><div class="board" id="bd8"></div><div id="c3"></div></div>
@@ -180,7 +184,7 @@ window._fbr();
 
 </section>
 <section id="s2">
-<div class="ch"><button id="cback">→</button><div style="flex:1;padding:0 8px"><b id="chn">💬</b> <small id="st" style="color:var(--mu)"></small></div><div><button id="callA">📞</button> <button id="callV">🎥</button> <button id="srb">🔍</button> <button id="cmbtn">⋮</button></div></div>
+<div class="ch"><button id="cback">→</button><div style="flex:1;padding:0 8px"><b id="chn">✦</b> <small id="st" style="color:var(--mu)"></small></div><div><button id="callA">📞</button> <button id="callV">🎥</button> <button id="srb">🔍</button> <button id="cmbtn">⋮</button></div></div>
 <div id="sbar" style="display:none;padding:0 12px 6px"><input id="sq" placeholder="بحث في الدردشة" style="width:100%;padding:10px 14px;border-radius:20px;border:0;background:var(--card);color:var(--tx);font:inherit"></div>
 <div id="pinb" class="note" style="display:none;background:var(--card);border-radius:10px;margin:0 10px;text-align:right;cursor:pointer"></div>
 <div id="arc" class="note" style="display:none">🗄 الدردشة مؤرشفة · <button id="unarc" style="padding:4px 10px">استرجاع</button></div>
@@ -376,9 +380,9 @@ $('eb').onclick=()=>{$('sheet').classList.remove('on');emo.classList.toggle('on'
 $('ab').onclick=()=>{emo.classList.remove('on');$('sheet').classList.toggle('on')};
 function upd(){const t=$('tx');t.style.height='auto';t.style.height=Math.min(140,t.scrollHeight)+'px';$('sd').textContent=t.value.trim()?'➤':'🎤'}
 $('tx').oninput=()=>{upd();typ()};
-function send(o){if(!chatCol)return;const id='m'+Date.now()+Math.random().toString(36).slice(2,6);o.u=uid;o.t=Date.now();if(replyTo&&MS[replyTo]){o.rp=replyTo;o.rq=txtOf(MS[replyTo]).slice(0,60);o.ru=MS[replyTo].u}if(CS.ttl)o.x=o.t+CS.ttl;clearBar();chatCol.doc(id).set(o).catch(e=>alert('تعذر الإرسال: '+(e.message||e.code)))}
+function send(o){if(!chatCol){alert('الدردشة غير متصلة بعد، تأكد من الإنترنت وتسجيل الدخول ثم أعد المحاولة');return false}const id='m'+Date.now()+Math.random().toString(36).slice(2,6);o.u=uid;o.t=Date.now();if(replyTo&&MS[replyTo]){o.rp=replyTo;o.rq=txtOf(MS[replyTo]).slice(0,60);o.ru=MS[replyTo].u}if(CS.ttl)o.x=o.t+CS.ttl;clearBar();chatCol.doc(id).set(o).catch(e=>{alert('تعذر الإرسال: '+(e.message||e.code));if(o.k==='t'&&!$('tx').value){$('tx').value=o.v;upd()}});return true}
 $('sd').onclick=()=>{const v=$('tx').value.trim();if(!v)return recToggle();if(editing){chatCol.doc(editing).update({v,ed:1}).catch(()=>{});clearBar();$('tx').value='';upd();return}
- send({k:'t',v});$('tx').value='';upd()};
+ if(send({k:'t',v})!==false){$('tx').value='';upd()}};
 const sh=(id,fn)=>$(id).onclick=()=>{$('sheet').classList.remove('on');fn()};
 sh('sg',()=>$('fi').click());sh('sc',()=>$('ci').click());sh('sf',()=>$('fd').click());sh('sa',()=>alert('صور AI قريباً'));
 sh('sk',()=>{const n=prompt('اسم جهة الاتصال'),p=n&&prompt('الرقم');if(p)send({k:'c',v:n+' — '+p})});
@@ -679,7 +683,7 @@ function tcoach(){coachOn=!coachOn;ls('coach',coachOn?'1':'0');applyTh();[render
 const cpuBusy={};
 function startVs(g,cpu){if(!confirm(cpu?'سيبدأ لعب جديد ضد الكمبيوتر. متأكد؟':'سيبدأ لعب جديد بانتظار صديقك. متأكد؟'))return;const b=cpu?'cpu':'';
  if(g==='chess')gameRef.set({b:START(),turn:'w',w:uid,bl:b,last:[],n:0,win:'',cr:'KQkq',ep:-1,why:''});else if(g==='dom')dref.set(dinit(uid,b));else if(g==='uno')uref.set(uinit(uid,b));else if(g==='car')kref.set(kinit(uid,b));else if(g==='jak')jref.set(jinit(uid,b));else if(g==='pool')pref.set(pinit(uid,b))}
-const NAMES2={'jojo@gmail.com':'جوجو','akram@gmail.com':'أكرم'};
+const NAMES2={'jojo@gmail.com':'ملكة','akram@gmail.com':'ملك'};
 const gst=()=>({chess:G0,dom:D,uno:U,car:K,jak:J,pool:P})[curGame];
 function paintWifi(){const S=gst(),b=$('wf');if(!S||!uid)return;const off=!peerSeen||Date.now()-peerSeen>45000;b.className='wf '+(S.bl==='cpu'?'cpu':off?'off':'on');b.title=S.bl==='cpu'?'تلعب ضد الكمبيوتر — اضغط للعب ضد صديقك':off?'الخصم غير متصل — اضغط للعب ضد الكمبيوتر':'الخصم متصل'}
 $('wf').onclick=()=>{const S=gst();if(!S)return;if(S.bl==='cpu')startVs(curGame,false);else if($('wf').classList.contains('off'))startVs(curGame,true)};
@@ -913,7 +917,7 @@ buildHome();
   else if(d.w!==uid&&!d.bl){d.bl=uid;gameRef.update({bl:uid})}
   const pm=me;me=d.w===uid?'w':d.bl===uid?'b':'w';if(pm!==me)az=null;if(d.w!==uid&&d.bl!==uid){$('nt').textContent='اللعبة ممتلئة (لاعبان فقط) — أنت مشاهد'}
   if(!Array.isArray(d.b)||d.b.length!==64)return;if(d.cr===undefined)d.cr=dcr(d.b);if(d.ep===undefined)d.ep=-1;G0=d;sel=null;hints=[];render()});
- chatCol.orderBy('t','asc').limit(500).onSnapshot(q=>{let un=false,incT=0;q.docChanges().forEach(c=>{const id=c.doc.id;if(c.type==='removed'){delete MS[id];const e=document.getElementById(id);e&&e.remove();return}
+ chatCol.orderBy('t','desc').limit(500).onSnapshot(q=>{let un=false,incT=0;q.docChanges().slice().sort((a,b)=>(a.doc.data().t||0)-(b.doc.data().t||0)).forEach(c=>{const id=c.doc.id;if(c.type==='removed'){delete MS[id];const e=document.getElementById(id);e&&e.remove();return}
    const d=c.doc.data();MS[id]=d;if(d.u!==uid&&d.t>incT)incT=d.t;if(ready&&c.type==='added'&&d.u!==uid)beep('msg');if(archT&&d.u!==uid&&d.t>archT){archT=0;ls('arch',null);un=true}addMsg(d,id,c.type==='modified')});if(un)renderAll();$('arc').style.display=archT?'block':'none';ready=true;filt();paintBadge();if(incT)markDel(incT)});
   dref=db.doc('games/domino');dref.onSnapshot(async q=>{let d=q.data();if(!d){d=dinit(uid,'');await dref.set(d)}else if(d.w!==uid&&!d.bl){d.bl=uid;dref.update({bl:uid})}
   dme=d.w===uid?'w':d.bl===uid?'b':'w';if(!Array.isArray(d.hw)||!Array.isArray(d.ch))return;D=d;dsel=null;drender()});
