@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>ملك وملكة</title>
 <meta name="theme-color" content="#7c5cff"><link rel="manifest" id="mf"><script>(function(){try{if(!/^https?:/.test(location.protocol))return;var u=function(p){return new URL(p,location.href).href};var m={name:"ملك وملكة",short_name:"ملك وملكة",lang:"ar",dir:"rtl",start_url:u("./"),scope:u("./"),display:"standalone",orientation:"portrait",background_color:"#0a0820",theme_color:"#7c5cff",icons:[{src:u("icon-192.png"),sizes:"192x192",type:"image/png",purpose:"any maskable"}]};document.getElementById("mf").href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}))}catch(e){}})()</script><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
 <style>
@@ -145,6 +145,8 @@ body.nocoach .dt.hint,body.nocoach .uc.hint,body.nocoach .jc.hint{animation:none
 #chatBtn.unr{color:#22c55e!important;text-shadow:0 0 8px #22c55e}
 #chp{width:34px;height:34px;border-radius:50%;object-fit:cover;vertical-align:middle;display:none}
 #toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#000c;color:#fff;padding:10px 16px;border-radius:20px;z-index:30;font-size:14px;display:none;max-width:86vw;text-align:center}
+#wbn{display:none;margin:8px 12px 0;padding:11px 14px;border-radius:16px;background:linear-gradient(100deg,#065f46,#0d9488);color:#fff;font-weight:700;text-align:center;box-shadow:0 6px 16px #0008;cursor:pointer}
+.gc .wb{position:absolute;top:10px;right:10px;z-index:3;background:#16a34a;color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:12px;box-shadow:0 0 14px #22c55e;animation:blk 1.3s infinite}
 </style></head><body>
 <script>window.dInst=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.dInst=e});addEventListener('appinstalled',()=>{window.dInst=null});
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol)&&!window.AndroidHider)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));</script>
@@ -183,7 +185,7 @@ window._fbr();
 
 <main>
 <section id="s1" class="on">
-<div id="home"></div><div id="gpage" style="display:none"><div id="gtop"><button id="gback">→</button><b id="gtitle"></b><span class="sp"></span><button id="wf" class="wf off" title="الاتصال"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="19" r="2" fill="currentColor"/><path d="M8.2 15.4a5.4 5.4 0 017.6 0M4.6 11.8a10.5 10.5 0 0114.8 0M1.2 8.2a15.4 15.4 0 0121.6 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button><button id="vmic" title="الصوت المباشر"><i class="rg"></i><i class="rg r2"></i><svg viewBox="0 0 24 24" width="22" height="22"><g fill="currentColor"><rect class="eq e1" x="3" y="9" width="3.4" height="6" rx="1.7"/><rect class="eq e2" x="8.6" y="4" width="3.4" height="16" rx="1.7"/><rect class="eq e3" x="14.2" y="7" width="3.4" height="10" rx="1.7"/><rect class="eq e4" x="19.6" y="10" width="2.4" height="4" rx="1.2"/></g></svg></button><button id="mus" title="موسيقى"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="3" fill="currentColor"/><circle cx="17.5" cy="16" r="3" fill="currentColor"/></svg></button><input type="file" id="mfi" accept="audio/*" hidden><input type="file" id="pfi" accept="image/*" hidden></div>
+<div id="wbn"></div><div id="home"></div><div id="gpage" style="display:none"><div id="gtop"><button id="gback">→</button><b id="gtitle"></b><span class="sp"></span><button id="wf" class="wf off" title="الاتصال"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="19" r="2" fill="currentColor"/><path d="M8.2 15.4a5.4 5.4 0 017.6 0M4.6 11.8a10.5 10.5 0 0114.8 0M1.2 8.2a15.4 15.4 0 0121.6 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button><button id="vmic" title="الصوت المباشر"><i class="rg"></i><i class="rg r2"></i><svg viewBox="0 0 24 24" width="22" height="22"><g fill="currentColor"><rect class="eq e1" x="3" y="9" width="3.4" height="6" rx="1.7"/><rect class="eq e2" x="8.6" y="4" width="3.4" height="16" rx="1.7"/><rect class="eq e3" x="14.2" y="7" width="3.4" height="10" rx="1.7"/><rect class="eq e4" x="19.6" y="10" width="2.4" height="4" rx="1.2"/></g></svg></button><button id="mus" title="موسيقى"><svg viewBox="0 0 24 24" width="21" height="21"><path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="3" fill="currentColor"/><circle cx="17.5" cy="16" r="3" fill="currentColor"/></svg></button><input type="file" id="mfi" accept="audio/*" hidden><input type="file" id="pfi" accept="image/*" hidden></div>
 <div id="pstrip"><div class="pl" id="plo"><div class="av" id="avo">👑</div><span id="nmo"></span></div><div class="vs">VS</div><div class="pl" id="plm"><div class="av" id="avm">👑</div><span id="nmm"></span></div></div>
 <div id="chessv" style="display:contents"><div class="bar" id="bar">…</div><div class="bar" id="cstatb"></div><div class="coach" id="coach"></div>
 <div class="stage"><div class="board" id="bd8"></div><div id="c3"></div></div>
@@ -193,7 +195,7 @@ window._fbr();
 <div id="car" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="kbar">…</div><div class="bar" id="kinfo"></div><div class="stage" style="padding:2px;perspective:none"><canvas id="cv" style="touch-action:none;border-radius:14px;box-shadow:0 10px 30px #0009"></canvas></div><div class="bar" id="kact"><input type="range" id="cs" min="60" max="340" value="200" style="width:75%"></div><div class="coach" id="ccoach"></div><div class="tb"><button class="cb2"></button><button id="knew">🔄 جديدة</button></div></div>
 <div id="jk" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="jbar">…</div><div class="bar" id="jinfo"></div><div id="jbd" style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center"></div><div class="bar" id="jact"></div><div id="jhand"></div><div class="coach" id="jcoach"></div><div class="tb"><button class="cb2"></button><button id="jnew">🔄 جديدة</button></div></div>
 <div id="pool" style="display:none;flex:1;min-height:0;flex-direction:column"><div class="bar" id="pbar">…</div><div class="bar" id="pinfo"></div><div id="pl3d"></div><div class="bar" id="pact"><input type="range" id="ppw" min="15" max="100" value="60" style="width:50%"> <button id="pfire" style="background:var(--ac);color:#fff">🎱 اضرب</button></div><div class="coach" id="pcoach"></div><div class="tb"><button class="cb2"></button><button id="pnew">🔄 جديدة</button></div></div>
-<audio id="vra" autoplay playsinline></audio></div>
+<audio id="vra" autoplay playsinline></audio><audio id="mra" autoplay playsinline></audio></div>
 
 </section>
 <section id="s2">
@@ -827,7 +829,7 @@ async function vmMic(on){if(!vm.sender)return;if(on){try{vm.stream=await navigat
 async function vmStart(){if(vm.pc||!navigator.mediaDevices||!window.RTCPeerConnection)return;vm.id='v'+Date.now();iceN=0;vm.pend=[];vmCreate();await vmMic(true);if(!vm.mic){vmLeave(false);return}
  const o=await vm.pc.createOffer();await vm.pc.setLocalDescription(o);voiceRef.set({id:vm.id,from:uid,offer:JSON.stringify(vm.pc.localDescription),t:Date.now()});vm.hb=setInterval(()=>voiceRef.update({t:Date.now()}).catch(()=>{}),6000)}
 async function vmJoin(d){vm.id=d.id;vm.last=d.id;iceN=0;vm.pend=[];vmCreate();await vm.pc.setRemoteDescription(JSON.parse(d.offer));iceAll.filter(x=>x.call===vm.id).forEach(x=>vm.pc.addIceCandidate(x.cand).catch(()=>{}));
- const a=await vm.pc.createAnswer();await vm.pc.setLocalDescription(a);voiceRef.update({answer:JSON.stringify(vm.pc.localDescription)});vmUI()}
+ const a=await vm.pc.createAnswer();await vm.pc.setLocalDescription(a);voiceRef.update({answer:JSON.stringify(vm.pc.localDescription)});vmUI();setTimeout(()=>vmMic(true),300)}
 function vmLeave(notify){clearInterval(vm.hb);clearInterval(vm.lvl);try{vm.pc&&vm.pc.close()}catch(e){}vm.pc=null;vm.sender=null;vm.stream&&vm.stream.getTracks().forEach(t=>t.stop());vm.stream=null;vm.mic=false;if(notify&&vm.id)voiceRef.update({state:'closed'}).catch(()=>{});$('vra').srcObject=null;vmUI()}
 const vmLong=lpress($('vmic'),700,()=>{if(vm.pc){vmLeave(true);alert('غادرت القناة الصوتية')}});
 $('vmic').onclick=()=>{if(vmLong())return;if(!vm.pc)vmStart();else vmMic(!vm.mic)};
@@ -951,7 +953,7 @@ buildHome();
   if(d.state==='ringing'&&d.from!==uid&&!inCall&&!incoming&&Date.now()-d.t<60000){incoming=d;callId=d.id;callUI((d.type==='video'?'🎥':'📞')+' مكالمة واردة…',true);ringLoop()}
   else if(d.id===callId&&inCall&&d.from===uid&&d.state==='active'&&d.answer&&pc&&!pc.remoteDescription){await pc.setRemoteDescription(JSON.parse(d.answer));flushIce()}
   if(d.state==='ended'&&d.id===callId&&(inCall||incoming))endCall(false)});
- iceCol.orderBy('t','asc').limit(300).onSnapshot(q=>{q.docChanges().forEach(c=>{if(c.type!=='added')return;const d=c.doc.data();if(d.u===uid)return;const cand=JSON.parse(d.c);iceAll.push({call:d.call,cand});if(iceAll.length>400)iceAll.shift();
+ iceCol.orderBy('t','asc').limit(300).onSnapshot(q=>{q.docChanges().forEach(c=>{if(c.type!=='added')return;const d=c.doc.data();if(d.u===uid)return;const cand=JSON.parse(d.c);iceAll.push({call:d.call,cand});window.muRoute&&muRoute(d.call,cand);if(iceAll.length>400)iceAll.shift();
    if(d.call===vm.id&&vm.pc){if(vm.pc.remoteDescription)vm.pc.addIceCandidate(cand).catch(()=>{});else vm.pend.push(cand)}else if(d.call===callId){if(pc&&pc.remoteDescription)pc.addIceCandidate(cand).catch(()=>{});else pendI.push(cand)}})});
  pref=db.doc('games/pool');pref.onSnapshot(async q=>{let d=q.data();if(!d){d=pinit(uid,'');await pref.set(d)}else if(d.w!==uid&&!d.bl){d.bl=uid;pref.update({bl:uid})}
   pme=d.w===uid?'w':d.bl===uid?'b':'w';if(!Array.isArray(d.pb)||pmine)return;if(!pinitd){pinitd=true;pseen=d.shot?d.shot.n:0}
@@ -959,7 +961,7 @@ buildHome();
   pjob++;P=d;pcoach=null;paim=null;prender()});
  delRef.onSnapshot(q=>{const d=q.data()||{};window._dl=d;const ot=Object.entries(d).filter(([k])=>k!==uid).map(([,v])=>v);peerDel=ot.length?Math.max(...ot):0;paintTicks()});
  voiceRef.onSnapshot(async q=>{const d=q.data();if(!d)return;
-  if(d.from!==uid&&!vm.pc&&!d.answer&&d.state!=='closed'&&Date.now()-d.t<20000&&d.id!==vm.last){await vmJoin(d)}
+  if(d.from!==uid&&!vm.pc&&!d.answer&&d.state!=='closed'&&Date.now()-d.t<60000&&d.id!==vm.last){await vmJoin(d)}
   else if(d.from===uid&&d.id===vm.id&&d.answer&&vm.pc&&!vm.pc.remoteDescription){clearInterval(vm.hb);await vm.pc.setRemoteDescription(JSON.parse(d.answer));vm.pend.splice(0).forEach(c=>vm.pc.addIceCandidate(c).catch(()=>{}))}
   if(d.state==='closed'&&d.id===vm.id&&vm.pc)vmLeave(false)});
  readRef.onSnapshot(q=>{const d=q.data()||{};window._rd=d;const ot=Object.entries(d).filter(([k])=>k!==uid).map(([,v])=>v);peerRead=ot.length?Math.max(...ot):0;paintTicks()});
@@ -980,17 +982,60 @@ $('pfi').onchange=e=>{const f=e.target.files[0];e.target.value='';if(!f||!profRe
 // ---- live voice: long-press names
 lpress($('plo'),600,()=>{const S=gst();if(!S||S.bl==='cpu')return;navigator.vibrate&&navigator.vibrate(30);if(!vm.pc){toast('🎙 جارٍ تشغيل الصوت المباشر…');vmStart()}else vmMic(!vm.mic).then(()=>toast(vm.mic?'🎙 المايك يعمل':'🔇 تم كتم المايك'))});
 lpress($('plm'),700,()=>{if(vm.pc){vmLeave(true);toast('غادرت القناة الصوتية')}});
-// ---- shared music (mixed into the voice channel)
-const MU={a:null,src:null,g1:null,g2:null,dest:null,muted:false,on:false};
+// ---- shared music: its own channel, works with or without live voice
+const MU={a:null,src:null,g1:null,g2:null,dest:null,muted:false,on:false,rx:false,tx:null,txid:'',pend:[],hb:null,rxpc:null,rxid:''};
+const muKey=e=>'meta/mus_'+String(e||'x').replace(/[^a-z0-9]/gi,'');let muMine=null,muPeer=null,muN=0;
 function muGraph(){const c=ac();if(!c)return false;if(!MU.dest){MU.dest=c.createMediaStreamDestination();MU.g1=c.createGain();MU.g2=c.createGain();MU.g1.connect(c.destination);MU.g2.connect(MU.dest)}return true}
 const muTrack=()=>MU.dest.stream.getAudioTracks()[0];
-function muUI(){const b=$('mus');b.classList.toggle('on',MU.on);b.classList.toggle('muted',MU.on&&MU.muted)}
+function muUI(){const b=$('mus'),on=MU.on||MU.rx;b.classList.toggle('on',on);b.classList.toggle('muted',on&&(MU.on?MU.muted:$('mra').muted))}
 function muGain(){const v=MU.muted?0:1;MU.g1.gain.value=v;MU.g2.gain.value=v}
-async function muStart(){if(vm.pc||!navigator.mediaDevices||!window.RTCPeerConnection)return;vm.id='v'+Date.now();iceN=0;vm.pend=[];vmCreate();await vm.sender.replaceTrack(muTrack());const o=await vm.pc.createOffer();await vm.pc.setLocalDescription(o);voiceRef.set({id:vm.id,from:uid,offer:JSON.stringify(vm.pc.localDescription),t:Date.now()});vm.hb=setInterval(()=>voiceRef.update({t:Date.now()}).catch(()=>{}),6000);vmUI()}
-async function muPick(f){if(!muGraph())return toast('المتصفح لا يدعم تشغيل الموسيقى');try{if(MU.a){MU.a.pause();URL.revokeObjectURL(MU.a.src)}if(MU.src)MU.src.disconnect();const a=new Audio();a.src=URL.createObjectURL(f);a.loop=true;MU.src=ac().createMediaElementSource(a);MU.src.connect(MU.g1);MU.src.connect(MU.g2);MU.a=a;MU.muted=false;MU.on=true;muGain();await a.play();muUI();toast('🎵 '+f.name.slice(0,30));if(vm.pc&&vm.sender)await vm.sender.replaceTrack(muTrack());else if(voiceRef)muStart()}catch(e){toast('تعذر تشغيل الملف')}}
-const muLong=lpress($('mus'),700,()=>{menu('الموسيقى',[['🎵 اختيار أغنية أخرى',()=>{cl();$('mfi').click()}],['⏹ إيقاف الموسيقى',()=>{cl();if(MU.a){MU.a.pause();MU.a=null}MU.on=false;muUI();if(vm.pc&&vm.sender&&!vm.mic)vm.sender.replaceTrack(null)}],['إغلاق',cl]])});
-$('mus').onclick=()=>{if(muLong())return;if(!MU.on){$('mfi').click();return}MU.muted=!MU.muted;muGain();muUI();toast(MU.muted?'🔇 تم كتم الموسيقى':'🎵 الموسيقى تعمل')};
+function muTxStop(notify){clearInterval(MU.hb);try{MU.tx&&MU.tx.close()}catch(e){}MU.tx=null;if(notify&&muMine)muMine.update({state:'off'}).catch(()=>{})}
+async function muTxStart(){if(!muMine||!MU.on||!uid)return;muTxStop(false);MU.txid='m'+Date.now();muN=0;MU.pend=[];const id=MU.txid,pc=MU.tx=new RTCPeerConnection(ICE);
+ pc.addTrack(muTrack(),new MediaStream([muTrack()]));
+ pc.onicecandidate=e=>{if(e.candidate)iceCol.doc(id+'_'+uid+'_'+(muN++)).set({call:id,u:uid,c:JSON.stringify(e.candidate),t:Date.now()}).catch(()=>{})};
+ pc.onconnectionstatechange=()=>{if(MU.tx===pc&&pc.connectionState==='failed'&&MU.on)setTimeout(muTxStart,1500)};
+ const o=await pc.createOffer();await pc.setLocalDescription(o);
+ muMine.set({id,from:uid,offer:JSON.stringify(pc.localDescription),t:Date.now(),state:'on'});
+ MU.hb=setInterval(()=>muMine.update({t:Date.now()}).catch(()=>{}),6000)}
+function muRxStop(){try{MU.rxpc&&MU.rxpc.close()}catch(e){}MU.rxpc=null;MU.rxid='';MU.rx=false;const a=$('mra');a.srcObject=null;a.muted=false;muUI()}
+async function muJoin(d){muRxStop();MU.rxid=d.id;let n=0;const pc=MU.rxpc=new RTCPeerConnection(ICE);
+ pc.ontrack=e=>{const a=$('mra');a.srcObject=new MediaStream([e.track]);a.muted=false;a.play().catch(()=>{});MU.rx=true;muUI();toast('🎵 الطرف الآخر شغّل موسيقى')};
+ pc.onicecandidate=e=>{if(e.candidate)iceCol.doc(d.id+'_'+uid+'_'+(n++)).set({call:d.id,u:uid,c:JSON.stringify(e.candidate),t:Date.now()}).catch(()=>{})};
+ pc.onconnectionstatechange=()=>{if(MU.rxpc===pc&&pc.connectionState==='failed')muRxStop()};
+ await pc.setRemoteDescription(JSON.parse(d.offer));
+ iceAll.filter(x=>x.call===d.id).forEach(x=>pc.addIceCandidate(x.cand).catch(()=>{}));
+ const a=await pc.createAnswer();await pc.setLocalDescription(a);
+ muPeer.update({answer:JSON.stringify(pc.localDescription)}).catch(()=>{})}
+window.muRoute=(call,cand)=>{if(call===MU.txid){if(MU.tx&&MU.tx.remoteDescription)MU.tx.addIceCandidate(cand).catch(()=>{});else MU.pend.push(cand)}else if(call===MU.rxid&&MU.rxpc&&MU.rxpc.remoteDescription)MU.rxpc.addIceCandidate(cand).catch(()=>{})};
+async function muPick(f){if(!muGraph())return toast('المتصفح لا يدعم تشغيل الموسيقى');
+ try{if(MU.a){MU.a.pause();URL.revokeObjectURL(MU.a.src)}if(MU.src)MU.src.disconnect();const a=new Audio();a.src=URL.createObjectURL(f);a.loop=true;MU.src=ac().createMediaElementSource(a);MU.src.connect(MU.g1);MU.src.connect(MU.g2);MU.a=a;MU.muted=false;MU.on=true;muGain();await a.play();muUI();toast('🎵 '+f.name.slice(0,30));
+ if(!MU.tx||['closed','failed'].includes(MU.tx.connectionState))muTxStart()}catch(e){toast('تعذر تشغيل الملف')}}
+function muStop(){if(MU.a){MU.a.pause();MU.a=null}MU.on=false;muTxStop(true);muUI()}
+const muLong=lpress($('mus'),700,()=>{menu('الموسيقى',[['🎵 اختيار أغنية'+(MU.on?' أخرى':''),()=>{cl();$('mfi').click()}],...(MU.on?[['⏹ إيقاف موسيقاي',()=>{cl();muStop()}]]:[]),...(MU.rx?[[$('mra').muted?'🔊 تشغيل موسيقى الطرف الآخر':'🔇 كتم موسيقى الطرف الآخر',()=>{cl();$('mra').muted=!$('mra').muted;muUI()}]]:[]),['إغلاق',cl]])});
+$('mus').onclick=()=>{if(muLong())return;if(MU.on){MU.muted=!MU.muted;muGain();muUI();toast(MU.muted?'🔇 تم كتم الموسيقى':'🎵 الموسيقى تعمل')}else if(MU.rx){const a=$('mra');a.muted=!a.muted;muUI();toast(a.muted?'🔇 تم كتم الموسيقى':'🎵 الموسيقى تعمل')}else $('mfi').click()};
 $('mfi').onchange=e=>{const f=e.target.files[0];e.target.value='';if(f)muPick(f)};
-vmMic=async function(on){if(!vm.sender)return;if(on){try{vm.stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});muGraph();vm.msrc=ac().createMediaStreamSource(vm.stream);vm.msrc.connect(MU.dest);await vm.sender.replaceTrack(muTrack());vm.mic=true;vmLevel(vm.stream,true)}catch(e){alert('لا يوجد إذن للمايكروفون')}}
- else{try{vm.msrc&&vm.msrc.disconnect()}catch(e){}vm.msrc=null;vm.stream&&vm.stream.getTracks().forEach(t=>t.stop());vm.stream=null;vm.mic=false;clearInterval(vm.lv2);vm.t2=false;$('avm').classList.remove('talk');if(!MU.on)await vm.sender.replaceTrack(null)}vmUI()};
+setInterval(()=>{const a=$('mra');if(a.srcObject&&a.paused&&!a.muted)a.play().catch(()=>{})},1500);
+const _mi=setInterval(()=>{if(typeof db!=='undefined'&&db&&uid&&window.fbEmail){clearInterval(_mi);const pe=Object.keys(NAMES2).find(x=>x!==window.fbEmail);muMine=db.doc(muKey(window.fbEmail));muPeer=db.doc(muKey(pe));
+ muMine.onSnapshot(async q=>{const d=q.data();if(d&&d.id===MU.txid&&d.answer&&MU.tx&&!MU.tx.remoteDescription){clearInterval(MU.hb);try{await MU.tx.setRemoteDescription(JSON.parse(d.answer));MU.pend.splice(0).forEach(c=>MU.tx.addIceCandidate(c).catch(()=>{}))}catch(e){}}});
+ muPeer.onSnapshot(async q=>{const d=q.data();if(!d)return;if(d.state==='off'){if(MU.rxid)muRxStop();return}if(d.state==='on'&&!d.answer&&Date.now()-d.t<60000&&d.id!==MU.rxid){try{await muJoin(d)}catch(e){}}})}},500);
+vmMic=async function(on){if(!vm.sender)return;if(on){try{vm.stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});await vm.sender.replaceTrack(vm.stream.getAudioTracks()[0]);vm.mic=true;vmLevel(vm.stream,true)}catch(e){toast('لا يوجد إذن للمايكروفون')}}
+ else{await vm.sender.replaceTrack(null);vm.stream&&vm.stream.getTracks().forEach(t=>t.stop());vm.stream=null;vm.mic=false;clearInterval(vm.lv2);vm.t2=false;$('avm').classList.remove('talk')}vmUI()};
+</script><script>
+// ---- reliability: TURN relays, remote audio autoplay, keep composer/keyboard fixed
+ICE.iceServers.push({urls:'turn:openrelay.metered.ca:80',username:'openrelayproject',credential:'openrelayproject'},{urls:'turn:openrelay.metered.ca:443',username:'openrelayproject',credential:'openrelayproject'},{urls:'turn:openrelay.metered.ca:443?transport=tcp',username:'openrelayproject',credential:'openrelayproject'});
+(function(){const a=$('vra');a.muted=false;a.volume=1;const go=()=>{if(a.srcObject&&a.paused)a.play().catch(()=>{})};setInterval(go,1500);addEventListener('pointerdown',go,true)})();
+$('sd').addEventListener('touchstart',e=>{if($('tx').value.trim()){e.preventDefault();$('sd').onclick()}},{passive:false});
+// ---- which game is the other person in
+let whereRef=null;
+function myWhere(g){if(!whereRef)return;const o={g:g||'',t:Date.now()};whereRef.update({[uid]:o}).catch(()=>whereRef.set({[uid]:o}))}
+const inGame=()=>$('gpage').style.display==='flex'?curGame:'';
+function peerWhere(){const d=window._wh||{},k=Object.keys(d).find(x=>x!==uid),v=k&&d[k];return v&&v.g&&Date.now()-v.t<70000?v.g:''}
+function paintWhere(){const g=peerWhere(),nm=(Object.entries(NAMES2).find(([e])=>e!==window.fbEmail)||[0,'الطرف الآخر'])[1];
+ document.querySelectorAll('#home .gc').forEach(c=>{let b=c.querySelector('.wb');if(c.dataset.g===g){if(!b){b=document.createElement('div');b.className='wb';c.appendChild(b)}b.textContent='🟢 '+nm+' هنا'}else if(b)b.remove()});
+ const bn=$('wbn');if(g&&GN[g]&&$('home').style.display!=='none'){bn.style.display='block';bn.textContent='🟢 '+nm+' داخل لعبة '+GN[g]+' — اضغط للانضمام';bn.onclick=()=>openGame(g)}else bn.style.display='none'}
+var _og=openGame;openGame=function(g){_og(g);myWhere(g);paintWhere();const p=peerWhere();if(p&&p!==g&&GN[p])setTimeout(()=>toast('الطرف الآخر داخل لعبة '+GN[p]),500)};
+var _sh=showHome;showHome=function(){_sh();myWhere('');paintWhere()};
+document.addEventListener('visibilitychange',()=>myWhere(document.hidden?'':inGame()));
+setInterval(()=>{if(!document.hidden)myWhere(inGame());paintWhere()},20000);
+const _wi=setInterval(()=>{if(typeof db!=='undefined'&&db&&uid){clearInterval(_wi);whereRef=db.doc('meta/where');whereRef.onSnapshot(q=>{window._wh=q.data()||{};paintWhere()});myWhere(inGame())}},500);
 </script></body></html>
