@@ -115,6 +115,7 @@ jobs:
               });
               delLauncher = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), r -> { });
               getBridge().getWebView().addJavascriptInterface(new Hider(), "AndroidHider");
+              getBridge().getWebView().getSettings().setMediaPlaybackRequiresUserGesture(false);
             }
 
             private void closeStreams() {
