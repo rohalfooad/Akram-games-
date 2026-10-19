@@ -168,7 +168,7 @@ onAuthStateChanged(auth,u=>{window.fbEmail=u?u.email:'';$('login').classList.tog
 window.fbLogout=async()=>{try{await Promise.race([signOut(auth),new Promise(r=>setTimeout(r,2500))])}catch(e){}try{$('login').classList.add('on')}catch(e){}setTimeout(()=>location.replace(location.pathname),150)};
 const go=async()=>{$('lgm').textContent='';try{await signInWithEmailAndPassword(auth,$('lge').value.trim(),$('lgp').value)}catch(e){$('lgm').textContent=(e.code==='auth/too-many-requests')?'⏳ محاولات كثيرة، انتظر قليلاً':'❌ بيانات الدخول غير صحيحة'}};
 $('lgb').onclick=go;$('lgp').onkeydown=e=>{if(e.key==='Enter')go()};
-const cyc=async()=>{try{await disableNetwork(fs);await enableNetwork(fs)}catch(e){}};window.fbReconnect=cyc;window.addEventListener('online',cyc);document.addEventListener('visibilitychange',()=>{if(!document.hidden)cyc()});window._fbLast=Date.now();setInterval(()=>{if(navigator.onLine&&!document.hidden&&Date.now()-window._fbLast>120000){window._fbLast=Date.now();cyc()}},20000);
+let wasOff=false;const cyc=async()=>{try{await disableNetwork(fs);await enableNetwork(fs)}catch(e){}};window.fbReconnect=cyc;window.addEventListener('offline',()=>{wasOff=true});window.addEventListener('online',()=>{if(wasOff){wasOff=false;setTimeout(cyc,1500)}});window._fbLast=Date.now();
 window._fbr();
 </script>
 
